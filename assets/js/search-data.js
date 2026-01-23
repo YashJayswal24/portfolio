@@ -51,18 +51,7 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/portfolio/blog/";
               },
-            },{id: "post-hello-world",
-        
-          title: "Hello World",
-        
-        description: "Welcome to my new portfolio website!",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/portfolio/blog/2025/hello-world/";
-          
-        },
-      },{id: "books-the-godfather",
+            },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
           section: "Books",handler: () => {
