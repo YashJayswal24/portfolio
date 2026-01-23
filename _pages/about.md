@@ -15,7 +15,7 @@ selected_papers: false # Set to false if you don't have papers.bib papers yet
 social: true
 
 announcements:
-  enabled: true
+  enabled: false
   scrollable: true
   limit: 5
 
