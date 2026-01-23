@@ -2,96 +2,92 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
+      value: Yash Jayswal
     - name: Languages
-      value: English, German
+      value: English, Hindi, Gujarati
+    # - name: Date of Birth
+    #   value: 14th March 1879
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: B.Tech. in Electrical Engineering
+      institution: Indian Institute of Technology Delhi
+      year: 2020 - 2024
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+        - "Coursework: Probability & stochastic processes, Digital image processing, Machine intelligence & learning, Data structures & algorithm, Graph theory, Computer architecture."
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Software Engineer
+      institution: Samsung HQ, Suwon, South Korea
+      year: Aug 2024 - present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - Developed a multilingual ASR model (31 languages) and optimized it for real-time streaming using quantization, chunking, K-V caching, VAD, and align-attention, achieving ≈ 45% latency reduction.
+        - Implemented scalable C++ model handling modules within a multi-user Bixby Cloud environment for Fast Conformer-based ASR models.
+        - Improved the beam search module, optimizing memory usage by 10%, and developed a result handling module in C++.
+        - Coordinated global Samsung R&D centers for the 2025 ASR deployment cycle across 12 languages.
+        - Designed and maintained a robust Data collection pipeline for ASR training with automated data collection using yt-dlp.
+        - Implemented model conversion workflows from .nemo to .onnx for Fast-Conformer.
+    - title: Software Engineer Intern
+      institution: Samsung HQ, Suwon, South Korea
+      year: May 2023 - July 2023
       description:
-        - Description 1.
-        - Description 2.
+        - Developed Name Entity Replacer for the Personal Database module with tolerance toward mispronounced names.
+        - Proposed novel phoneme similarity metric based on manner of articulation paired with Metaphone and Soundex algorithm.
+        - Developed Metaphone and phoneme similarity metrics, achieving 96.3% and 98.3% accuracy respectively.
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
+- title: Research Projects
   type: time_table
   contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - title: Semantic Communication
+      institution: Prof. Brejesh Lall
+      year: 2023 - 2024
+      description: Developed a generative AI-based semantic communication pipeline targeting 6G, utilizing guided Stable Diffusion + ControlNet to improve hallucination and color retention.
+    - title: Panic-Driven Crowd Dynamics
+      institution: Prof. Sujin B Babu
+      year: 2022 - 2023
+      description: Developed strategies to reduce fatalities in dense crowd panic situations through agent-based simulation and numerical mollification.
+    - title: DSCoin - Cryptocurrency
+      institution: Prof. Amitabha Bagchi
+      year: 2022
+      description: Built a cryptocurrency system using SHA256 hashing and implemented a proof-of-work blockchain in Java.
 
-- title: Honors and Awards
+- title: Scholastic Achievements
   type: time_table
   contents:
-    - year: 1921
+    - year: 2024
       items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
+        - Summer Undergrad Research Award (SURA), IIT Delhi
+    - year: 2020
       items:
-        - Max Planck Medal
+        - Codeforces Expert (Rating: 1791, top 8%)
+        - Joint Entrance Examination Advanced: All India Rank 319 (Top 0.2%)
+        - Joint Entrance Examination Main: All India Rank 1383 (Top 0.1%)
 
-- title: Academic Interests
+- title: Technical Skills
   type: nested_list
   contents:
-    - title: Topic 1.
+    - title: Programming Languages
       items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
+        - Python, C, C++, Java, HTML, CSS
+    - title: Technologies & Frameworks
       items:
-        - Description 1.
-        - Description 2.
+        - Tensorflow, Keras, Numpy, PyTorch, MATLAB, Bootstrap, Latex, Git, Kubernetes
+    - title: Certifications
+      items:
+        - Deep Learning Specialization (Neural Networks, Optimization, Sequence Models, CNN)
 
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+# - title: Academic Interests
+#   type: nested_list
+#   contents:
+#     - title: Topic 1.
+#       items:
+#         - Description 1.
+#         - Description 2.
+
+# - title: Other Interests
+#   type: list
+#   contents:
+#     - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.

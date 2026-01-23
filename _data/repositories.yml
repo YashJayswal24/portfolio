@@ -1,14 +1,8 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - YashJayswal24
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - YashJayswal24/crowd_evacuation
+  - YashJayswal24/Generic_Image_Annotation
