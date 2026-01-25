@@ -25,8 +25,8 @@ latest_posts:
   limit: 3
 ---
 
-I am a Software Engineer at **Samsung HQ** in Suwon, South Korea, where I work on developing and optimizing multilingual Automatic Speech Recognition (ASR) models. I recently graduated from the **Indian Institute of Technology Delhi** with a B.Tech. in Electrical Engineering.
+I am a Software Engineer at **Samsung HQ** in Suwon, South Korea, where I work on developing and optimizing Automatic Speech Recognition (ASR) models on cloud for Bixby. I graduated from the **Indian Institute of Technology Delhi** with a B.Tech. in Electrical Engineering.
 
-My professional interests lie at the intersection of Machine Learning, Signal Processing, and Software Engineering. I have experience in building scalable C++ modules for cloud environments, designing robust data pipelines, and researching generative AI for semantic communication.
+My professional interests lie at the intersection of Machine Learning, Signal Processing, and Software Engineering with a concetration on resource efficient AI. I have experience in building scalable C++ modules for cloud environments, designing data pipelines, and researching generative AI for semantic communication.
 
-When I'm not coding for work, I enjoy participating in competitive programming (Expert on Codeforces) and exploring new technologies in the blockchain and AI space.
+When I'm not coding for work, I enjoy participating in competitive programming (Expert on Codeforces) and exploring new technologies in the AI optimization space.

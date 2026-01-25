@@ -6,7 +6,7 @@
     "email": "yashmjayswal@gmail.com",
     "phone": "+82 010 7408 2354",
     "url": "https://YashJayswal24.github.io/portfolio/",
-    "summary": "Software Engineer at Samsung HQ, Suwon, South Korea. IIT Delhi graduate (B.Tech Electrical Engineering). Experienced in multilingual ASR models, C++ cloud modules, and machine learning research.",
+    "summary": "Software Engineer at Samsung HQ, Suwon, South Korea. IIT Delhi graduate (B.Tech Electrical Engineering). Experienced in ASR models, C++ cloud modules, machine learning research, and ML optimisation.",
     "location": {
       "city": "Suwon",
       "countryCode": "KR",
@@ -82,19 +82,19 @@
   "awards": [
     {
       "title": "Summer Undergrad Research Award (SURA)",
-      "date": "2024-01-01",
+      "date": "2022-08",
       "awarder": "Industrial R&D Unit, IIT Delhi",
       "summary": "Conferred for excellent research."
     },
     {
       "title": "JEE Advanced Rank 319",
-      "date": "2020-01-01",
+      "date": "2020-08",
       "awarder": "National Testing Agency",
       "summary": "Secured All India Rank 319 among 150,000+ students."
     },
     {
       "title": "JEE Main Rank 1383",
-      "date": "2020-01-01",
+      "date": "2020-06",
       "awarder": "National Testing Agency",
       "summary": "Secured All India Rank 1383 among 1 Million+ students."
     }
@@ -102,7 +102,7 @@
   "certificates": [
     {
       "name": "Deep Learning Specialization",
-      "date": "2024-01-01",
+      "date": "2022-01-13",
       "issuer": "Coursera / deeplearning.ai",
       "summary": "Neural Networks, Optimization, Sequence Models, CNN"
     }
@@ -114,9 +114,7 @@
         "Python",
         "C",
         "C++",
-        "Java",
-        "HTML",
-        "CSS"
+        "Java"
       ]
     },
     {
@@ -127,8 +125,7 @@
         "Numpy",
         "PyTorch",
         "MATLAB",
-        "Bootstrap",
-        "Latex",
+        "jax",
         "Git",
         "Kubernetes"
       ]
@@ -151,6 +148,7 @@
   "projects": [
     {
       "name": "Semantic Communication",
+      "url": "https://drive.google.com/file/d/15frSPyPzs91r3MZHEGQrwWydvcyGISyc/view",
       "summary": "Developed a generative AI-based semantic communication pipeline targeting 6G communication.",
       "highlights": [
         "Guided Stable Diffusion + ControlNet approach",
@@ -159,6 +157,7 @@
     },
     {
       "name": "Panic-Driven Crowd Dynamics",
+      "url": "https://drive.google.com/file/d/1AKV16C9QtdNNqSU6K-GetxuzQnaQ_GYw/view?usp=sharing",
       "summary": "Developed strategies to reduce death count in dense crowd panic situations through simulation.",
       "highlights": [
         "Reduced death rate by 70%",
@@ -167,6 +166,7 @@
     },
     {
       "name": "DSCoin - Cryptocurrency",
+      "url": "https://github.com/YashJayswal24/Crypto_Chain",
       "summary": "Built cryptocurrency system using SHA256 hashing and implemented mechanism to validate transactions.",
       "highlights": [
         "Proof-of-work Blockchain in Java",

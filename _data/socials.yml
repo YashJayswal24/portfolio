@@ -2,6 +2,14 @@ cv_pdf: /assets/pdf/Yash_CV.pdf
 email: yashmjayswal@gmail.com
 github_username: YashJayswal24
 linkedin_username: yash-jayswal
+custom_social: # can be any name here other than the ones already defined in the jekyll-socials plugin
+  logo: https://img.icons8.com/external-tal-revivo-regular-tal-revivo/1200/external-codeforces-programming-competitions-and-contests-programming-community-logo-regular-tal-revivo.jpg # can be png, svg, jpg
+  title: nemesis_R
+  url: https://codeforces.com/profile/nemesis_R
+# custom_social: # can be any name here other than the ones already defined in the jekyll-socials plugin
+#   logo: fa-brands fa-linkedin # can be png, svg, jpg
+#   title: yash-jayswal
+#   url: https://www.linkedin.com/in/yash-jayswal/
 # codeforces: nemesis_R # This was causing the crash because it lacked a logo
 # rss_icon: true
 # scholar_userid: 

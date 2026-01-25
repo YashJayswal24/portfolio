@@ -1,0 +1,25 @@
+<!-- todo it is not getting used rignt now my anything -->
+
+
+<!-- Email -->
+{% if site.data.socials.email %}
+<a href="mailto:{{ site.data.socials.email }}" title="Email: {{ site.data.socials.email }}" target="_blank">
+  <i class="fas fa-envelope"></i>
+</a>
+{% endif %}
+
+<!-- GitHub -->
+{% if site.data.socials.github_username %}
+<a href="https://github.com/{{ site.data.socials.github_username }}" title="{{ site.data.socials.github_username }}" target="_blank">
+  <i class="fab fa-github"></i>
+</a>
+{% endif %}
+
+<!-- LinkedIn -->
+{% if site.data.socials.linkedin_username %}
+<a href="https://linkedin.com/in/{{ site.data.socials.linkedin_username }}" title="{{ site.data.socials.linkedin_username }}" target="_blank">
+  <i class="fab fa-linkedin"></i>
+</a>
+{% endif %}
+
+
