@@ -64,7 +64,17 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "News",},{id: "teachings-data-science-fundamentals",
+          section: "News",},{id: "projects-panic-driven-crowd-dynamics",
+          title: 'Panic-Driven Crowd Dynamics',
+          description: "Developed strategies to reduce death count in dense crowd panic situations through simulation.",
+          section: "Projects",handler: () => {
+              window.location.href = "/portfolio/projects/crowd_evacuation/";
+            },},{id: "projects-dscoin-cryptocurrency",
+          title: 'DSCoin - Cryptocurrency',
+          description: "Built cryptocurrency system using SHA256 hashing and implemented mechanism to validate transactions.",
+          section: "Projects",handler: () => {
+              window.location.href = "/portfolio/projects/dscoin/";
+            },},{id: "teachings-data-science-fundamentals",
           title: 'Data Science Fundamentals',
           description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
           section: "Teachings",handler: () => {
