@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-understanding-lstms-a-hands-on-intuition",
+        },{id: "post-building-autograd-chain-rule-and-topo-sort",
+        
+          title: "Building Autograd: Chain Rule and Topo-Sort",
+        
+        description: "Implementing a basic autograd engine from scratch and discovering the real-world power of topological sorting.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/building-autograd/";
+          
+        },
+      },{id: "post-understanding-lstms-a-hands-on-intuition",
         
           title: "Understanding LSTMs: A Hands-on Intuition",
         
