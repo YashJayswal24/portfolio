@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-hello-world",
+        },{id: "post-earned-deep-ml-badges-attention-is-all-you-need-amp-resnet",
+        
+          title: "Earned Deep-ML Badges - Attention Is All You Need &amp; ResNet",
+        
+        description: "Celebrating the completion of Deep-ML problem collections on Transformers and ResNet architectures.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/deep-ml-badges/";
+          
+        },
+      },{id: "post-hello-world",
         
           title: "Hello World",
         
@@ -111,6 +122,20 @@ ninja.data = [{
         section: 'Socials',
         handler: () => {
           window.open("https://www.linkedin.com/in/yash-jayswal", "_blank");
+        },
+      },{
+        id: 'social-leetcode',
+        title: 'LeetCode',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://leetcode.com/u/NemesisX/", "_blank");
+        },
+      },{
+        id: 'social-kaggle',
+        title: 'Kaggle',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.kaggle.com/reptor420", "_blank");
         },
       },{
         id: 'social-custom_social',
