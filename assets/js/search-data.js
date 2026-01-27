@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-earned-deep-ml-badges-attention-is-all-you-need-amp-resnet",
+        },{id: "post-understanding-lstms-a-hands-on-intuition",
+        
+          title: "Understanding LSTMs: A Hands-on Intuition",
+        
+        description: "Implementing Long Short-Term Memory (LSTM) from scratch and exploring the intuition behind its gates.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/understanding-lstms/";
+          
+        },
+      },{id: "post-earned-deep-ml-badges-attention-is-all-you-need-amp-resnet",
         
           title: "Earned Deep-ML Badges - Attention Is All You Need &amp; ResNet",
         
