@@ -44,14 +44,14 @@ Refugees are randomly spawned around the food distribution point. Once they coll
 Our simulations demonstrate the effectiveness of strategic obstacle placement in reducing fatalities during panic-driven crowd dynamics.
 
 <div class="row mt-3">
-    <div class="col-sm-6 mt-3 mt-md-0">
-        {% include video.liquid path="https://youtube.com/shorts/Xe6k2Pxfrcs" class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm-6 mt-3 mt-md-0 text-center">
+        {% include video.liquid path="https://www.youtube.com/embed/Xe6k2Pxfrcs" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>No Obstacle Case:</strong> High congestion and fatalities as refugees rush toward the food distribution point without guidance.
         </div>
     </div>
-    <div class="col-sm-6 mt-3 mt-md-0">
-        {% include video.liquid path="https://youtube.com/shorts/X56qHXFP3AA" class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm-6 mt-3 mt-md-0 text-center">
+        {% include video.liquid path="https://www.youtube.com/embed/X56qHXFP3AA" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>One Obstacle Case:</strong> Single obstacle reduces fatalities by ~15% by redirecting crowd flow.
         </div>
@@ -59,8 +59,8 @@ Our simulations demonstrate the effectiveness of strategic obstacle placement in
 </div>
 
 <div class="row mt-3">
-    <div class="col-sm-8 mx-auto mt-3 mt-md-0">
-        {% include video.liquid path="https://youtube.com/shorts/buY6AbsJ4Yo" class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm-8 mx-auto mt-3 mt-md-0 text-center">
+        {% include video.liquid path="https://www.youtube.com/embed/buY6AbsJ4Yo" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>Two Obstacle Case:</strong> Optimized two-obstacle configuration achieves up to 70% reduction in deaths by splitting crowd into three streams.
         </div>
