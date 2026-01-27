@@ -78,6 +78,8 @@
     - title: Certifications
       items:
         - Deep Learning Specialization (Neural Networks, Optimization, Sequence Models, CNN)
+        - "Deep-ML: Attention Is All You Need Badge (Jan 2026)"
+        - "Deep-ML: ResNet Badge (Jan 2026)"
 
 # - title: Academic Interests
 #   type: nested_list

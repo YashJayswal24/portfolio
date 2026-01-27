@@ -104,7 +104,22 @@
       "name": "Deep Learning Specialization",
       "date": "2022-01-13",
       "issuer": "Coursera / deeplearning.ai",
-      "summary": "Neural Networks, Optimization, Sequence Models, CNN"
+      "summary": "Neural Networks, Optimization, Sequence Models, CNN",
+      "url": "https://coursera.org/share/2462a491ea140833b0ec3e60d9d7c489"
+    },
+    {
+      "name": "Attention Is All You Need",
+      "date": "2026-01-27",
+      "issuer": "Deep-ML",
+      "url": "https://www.deep-ml.com/credentials/DMLBADGE-ATTENTIONISALLYOUNEED-mkvyjfa5",
+      "summary": "Successfully completed all problems in the Attention Is All You Need collection."
+    },
+    {
+      "name": "ResNet Badge",
+      "date": "2026-01-27",
+      "issuer": "Deep-ML",
+      "url": "https://www.deep-ml.com/credentials/DMLBADGE-RESNET-mkvzwgo0",
+      "summary": "Successfully completed all problems in the ResNet collection."
     }
   ],
   "skills": [
