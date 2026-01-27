@@ -39,7 +39,7 @@
       "endDate": "",
       "summary": "Working on multilingual ASR models and scalable C++ cloud infrastructure for Bixby.",
       "highlights": [
-        "Developed a multilingual ASR model (31 languages) achieving ≈ 45% latency reduction.",
+        "Developed an ASR model (31 languages) achieving ≈ 45% latency reduction from baseline.",
         "Implemented C++ modules within multi-user Bixby Cloud for Fast Conformer models.",
         "Improved beam search module memory usage by 10%.",
         "Coordinated global R&D centers for 2025 ASR deployment across 12 languages.",
