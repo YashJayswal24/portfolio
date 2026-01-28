@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-densenet-block-brute-force-feature-reuse",
+        },{id: "post-3-new-deep-ml-badges-earned",
+        
+          title: "3 New Deep-ML Badges Earned! 🏆",
+        
+        description: "Celebrating completion of the Machine Learning, Deep Learning, and DenseNet collections on Deep-ML.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/deep-ml-badges-new/";
+          
+        },
+      },{id: "post-densenet-block-brute-force-feature-reuse",
         
           title: "DenseNet Block: Brute-Force Feature Reuse",
         
