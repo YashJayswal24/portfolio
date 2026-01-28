@@ -37,7 +37,29 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-building-autograd-chain-rule-and-topo-sort",
+        },{id: "post-pegasos-kernel-svm-the-hardest-math-so-far",
+        
+          title: "Pegasos Kernel SVM: The Hardest Math So Far",
+        
+        description: "Implementing a deterministic Pegasos algorithm for kernel SVMs and diving deep into the mathematics of support vector machines.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/pegasos-svm/";
+          
+        },
+      },{id: "post-building-a-primitive-gpt-2-layers-amp-dimensions",
+        
+          title: "Building a Primitive GPT-2: Layers &amp; Dimensions",
+        
+        description: "Merging deep learning concepts to build a simplified GPT-2 text generator and understanding the importance of dimensions.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/building-gpt2/";
+          
+        },
+      },{id: "post-building-autograd-chain-rule-and-topo-sort",
         
           title: "Building Autograd: Chain Rule and Topo-Sort",
         
