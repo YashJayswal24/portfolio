@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-pegasos-kernel-svm-the-hardest-math-so-far",
+        },{id: "post-densenet-block-brute-force-feature-reuse",
+        
+          title: "DenseNet Block: Brute-Force Feature Reuse",
+        
+        description: "Implementing a DenseNet dense block from scratch and comparing it to ResNet.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/densenet-block/";
+          
+        },
+      },{id: "post-pegasos-kernel-svm-the-hardest-math-so-far",
         
           title: "Pegasos Kernel SVM: The Hardest Math So Far",
         
