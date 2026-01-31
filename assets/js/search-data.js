@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-level-up-alexnet-deepseek-r1-amp-linear-algebra-badges",
+        },{id: "post-math-to-model-grpo-pca-augmentation-and-svd",
+        
+          title: "Math to Model: GRPO, PCA Augmentation, and SVD",
+        
+        description: "Implementing the GRPO objective from DeepSeekMath, AlexNet&#39;s PCA color augmentation, and SVD from scratch.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/math-to-model/";
+          
+        },
+      },{id: "post-level-up-alexnet-deepseek-r1-amp-linear-algebra-badges",
         
           title: "Level Up: AlexNet, DeepSeek R1, &amp; Linear Algebra Badges! 🚀",
         
