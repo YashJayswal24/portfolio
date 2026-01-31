@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-3-new-deep-ml-badges-earned",
+        },{id: "post-level-up-alexnet-deepseek-r1-amp-linear-algebra-badges",
+        
+          title: "Level Up: AlexNet, DeepSeek R1, &amp; Linear Algebra Badges! 🚀",
+        
+        description: "Breaking down my latest Deep-ML achievements in reinforcement learning, linear algebra, and classic CNNs.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/more-deep-ml-badges/";
+          
+        },
+      },{id: "post-3-new-deep-ml-badges-earned",
         
           title: "3 New Deep-ML Badges Earned! 🏆",
         
