@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-math-to-model-grpo-pca-augmentation-and-svd",
+        },{id: "post-scaling-llms-from-alchemy-to-science-part-0",
+        
+          title: "Scaling LLMs: From Alchemy to Science (Part 0)",
+        
+        description: "Understanding strong scaling, roofline models, and why Transformers won the hardware compatibility game.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/scaling-llms-intro/";
+          
+        },
+      },{id: "post-math-to-model-grpo-pca-augmentation-and-svd",
         
           title: "Math to Model: GRPO, PCA Augmentation, and SVD",
         
