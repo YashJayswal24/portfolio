@@ -121,6 +121,8 @@ At Samsung, this means when we quantize models, we're not just saving memory —
 
 All my notes and future implementations are in the [Model_scaling_jax](https://github.com/YashJayswal24/Model_scaling_jax) repository.
 
+**Original Q&A**: [Google Doc](https://docs.google.com/document/d/1ehl3ivkPN2CDPUw7smtvqstiPivIksT7wxGYRbFmypg/edit?usp=sharing)
+
 **Next up**: Part 2 - TPU Architecture
 
 ---
