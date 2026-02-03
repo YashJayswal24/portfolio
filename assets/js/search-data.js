@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-scaling-llms-from-alchemy-to-science-part-0",
+        },{id: "post-roofline-analysis-when-does-your-model-hit-the-wall",
+        
+          title: "Roofline Analysis: When Does Your Model Hit the Wall?",
+        
+        description: "Understanding compute-bound vs. memory-bound operations, arithmetic intensity, and how quantization changes the game.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/roofline-analysis/";
+          
+        },
+      },{id: "post-scaling-llms-from-alchemy-to-science-part-0",
         
           title: "Scaling LLMs: From Alchemy to Science (Part 0)",
         
