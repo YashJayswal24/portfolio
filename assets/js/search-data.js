@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-roofline-analysis-when-does-your-model-hit-the-wall",
+        },{id: "post-tpu-architecture-understanding-the-bandwidth-hierarchy",
+        
+          title: "TPU Architecture: Understanding the Bandwidth Hierarchy",
+        
+        description: "From MXUs and VMEM to ICI and DCN — mapping the performance landscape of Google&#39;s TPUs.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/tpu-architecture/";
+          
+        },
+      },{id: "post-roofline-analysis-when-does-your-model-hit-the-wall",
         
           title: "Roofline Analysis: When Does Your Model Hit the Wall?",
         
