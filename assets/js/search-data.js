@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-sharding-strategies-the-art-of-distributed-matrix-multiplication",
+        },{id: "post-transformer-math-the-6pt-rule-and-other-accounting-tricks",
+        
+          title: "Transformer Math: The 6PT Rule and Other Accounting Tricks",
+        
+        description: "Parameter counting, FLOPs estimation, attention complexity — the economics of modern LLMs.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/transformer-math/";
+          
+        },
+      },{id: "post-sharding-strategies-the-art-of-distributed-matrix-multiplication",
         
           title: "Sharding Strategies: The Art of Distributed Matrix Multiplication",
         
