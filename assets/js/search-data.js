@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-tpu-architecture-understanding-the-bandwidth-hierarchy",
+        },{id: "post-sharding-strategies-the-art-of-distributed-matrix-multiplication",
+        
+          title: "Sharding Strategies: The Art of Distributed Matrix Multiplication",
+        
+        description: "AllGather, ReduceScatter, AllToAll — mastering the 4 communication primitives that make LLM training scale.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/sharding-strategies/";
+          
+        },
+      },{id: "post-tpu-architecture-understanding-the-bandwidth-hierarchy",
         
           title: "TPU Architecture: Understanding the Bandwidth Hierarchy",
         
