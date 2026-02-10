@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-transformer-math-the-6pt-rule-and-other-accounting-tricks",
+        },{id: "post-training-at-scale-when-communication-becomes-the-enemy",
+        
+          title: "Training at Scale: When Communication Becomes the Enemy",
+        
+        description: "Data Parallelism, FSDP, Tensor Parallelism — how to train 13B models without going communication-bound.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/training-at-scale/";
+          
+        },
+      },{id: "post-transformer-math-the-6pt-rule-and-other-accounting-tricks",
         
           title: "Transformer Math: The 6PT Rule and Other Accounting Tricks",
         
