@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-training-at-scale-when-communication-becomes-the-enemy",
+        },{id: "post-training-llama-3-on-tpus-putting-theory-into-practice",
+        
+          title: "Training LLaMA 3 on TPUs: Putting Theory Into Practice",
+        
+        description: "Applying parallelism equations to real models — parameter counting, FLOPs, memory, and sharding for LLaMA 3-70B and 405B on TPU v5p pods.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/training-llama3/";
+          
+        },
+      },{id: "post-training-at-scale-when-communication-becomes-the-enemy",
         
           title: "Training at Scale: When Communication Becomes the Enemy",
         
