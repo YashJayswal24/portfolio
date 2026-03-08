@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-training-llama-3-on-tpus-putting-theory-into-practice",
+        },{id: "post-transformer-inference-two-problems-in-disguise",
+        
+          title: "Transformer Inference: Two Problems in Disguise",
+        
+        description: "Prefill is compute-bound like training. Generation is always memory-bandwidth-bound. The KV cache changes everything.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/inference-at-scale/";
+          
+        },
+      },{id: "post-training-llama-3-on-tpus-putting-theory-into-practice",
         
           title: "Training LLaMA 3 on TPUs: Putting Theory Into Practice",
         
