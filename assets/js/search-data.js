@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-transformer-inference-two-problems-in-disguise",
+        },{id: "post-serving-llama-3-70b-from-theory-to-production-numbers",
+        
+          title: "Serving LLaMA 3-70B: From Theory to Production Numbers",
+        
+        description: "Real hardware serving decisions — KV cache sizing, topology selection, critical batch sizes, and the disaggregated serving ratio for LLaMA 3-70B on TPU v5e.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/serving-llama3/";
+          
+        },
+      },{id: "post-transformer-inference-two-problems-in-disguise",
         
           title: "Transformer Inference: Two Problems in Disguise",
         
