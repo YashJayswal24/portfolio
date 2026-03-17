@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-tpu-profiling-when-math-meets-reality",
+        },{id: "post-gpus-for-llms-the-same-rooflines-different-numbers",
+        
+          title: "GPUs for LLMs: The Same Rooflines, Different Numbers",
+        
+        description: "How GPUs differ from TPUs at the chip level, NVLink networking, collective communications, and why pipeline parallelism is the key to training LLaMA-3 70B at scale.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/gpus-for-llms/";
+          
+        },
+      },{id: "post-tpu-profiling-when-math-meets-reality",
         
           title: "TPU Profiling: When Math Meets Reality",
         
