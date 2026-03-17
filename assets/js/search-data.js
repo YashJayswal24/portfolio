@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-serving-llama-3-70b-from-theory-to-production-numbers",
+        },{id: "post-tpu-profiling-when-math-meets-reality",
+        
+          title: "TPU Profiling: When Math Meets Reality",
+        
+        description: "Digging into JAX profiles, HLO traces, and observing our theoretical FLOP scaling limits in action.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/tpu-profiling/";
+          
+        },
+      },{id: "post-serving-llama-3-70b-from-theory-to-production-numbers",
         
           title: "Serving LLaMA 3-70B: From Theory to Production Numbers",
         
