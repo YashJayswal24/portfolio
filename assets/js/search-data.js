@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-gpus-for-llms-the-same-rooflines-different-numbers",
+        },{id: "post-scaling-llms-moe-routing-amp-jax-parallelism-on-tpu",
+        
+          title: "Scaling LLMs: MoE Routing &amp; JAX Parallelism on TPU",
+        
+        description: "A deep dive into JAX&#39;s three parallelism modes — from auto-sharding to manual shard_map — implementing Mixture-of-Experts routing with a 43× speedup on TPU v5e-8.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/jax-parallelism-moe/";
+          
+        },
+      },{id: "post-gpus-for-llms-the-same-rooflines-different-numbers",
         
           title: "GPUs for LLMs: The Same Rooflines, Different Numbers",
         
