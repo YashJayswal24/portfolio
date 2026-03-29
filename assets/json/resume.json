@@ -125,25 +125,11 @@
   "skills": [
     {
       "name": "Programming Languages",
-      "keywords": [
-        "Python",
-        "C",
-        "C++",
-        "Java"
-      ]
+      "keywords": ["Python", "C", "C++", "Java"]
     },
     {
       "name": "Technologies",
-      "keywords": [
-        "Tensorflow",
-        "Keras",
-        "Numpy",
-        "PyTorch",
-        "MATLAB",
-        "jax",
-        "Git",
-        "Kubernetes"
-      ]
+      "keywords": ["Tensorflow", "Keras", "Numpy", "PyTorch", "MATLAB", "jax", "Git", "Kubernetes"]
     }
   ],
   "languages": [
@@ -165,28 +151,19 @@
       "name": "Semantic Communication",
       "url": "https://drive.google.com/file/d/15frSPyPzs91r3MZHEGQrwWydvcyGISyc/view",
       "summary": "Developed a generative AI-based semantic communication pipeline targeting 6G communication.",
-      "highlights": [
-        "Guided Stable Diffusion + ControlNet approach",
-        "Achieved 0.31 LPIPS score on VGG net"
-      ]
+      "highlights": ["Guided Stable Diffusion + ControlNet approach", "Achieved 0.31 LPIPS score on VGG net"]
     },
     {
       "name": "Panic-Driven Crowd Dynamics",
       "url": "https://drive.google.com/file/d/1AKV16C9QtdNNqSU6K-GetxuzQnaQ_GYw/view?usp=sharing",
       "summary": "Developed strategies to reduce death count in dense crowd panic situations through simulation.",
-      "highlights": [
-        "Reduced death rate by 70%",
-        "Applied numerical mollification and optimized obstacle shapes"
-      ]
+      "highlights": ["Reduced death rate by 70%", "Applied numerical mollification and optimized obstacle shapes"]
     },
     {
       "name": "DSCoin - Cryptocurrency",
       "url": "https://github.com/YashJayswal24/Crypto_Chain",
       "summary": "Built cryptocurrency system using SHA256 hashing and implemented mechanism to validate transactions.",
-      "highlights": [
-        "Proof-of-work Blockchain in Java",
-        "Tree-structured Blockchain & broadcasting"
-      ]
+      "highlights": ["Proof-of-work Blockchain in Java", "Tree-structured Blockchain & broadcasting"]
     }
   ]
 }

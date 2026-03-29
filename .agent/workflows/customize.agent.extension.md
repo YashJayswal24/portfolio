@@ -177,13 +177,12 @@ When users reference issues or discussions:
    - ❌ Avoid: "Please provide the link to the discussion so I can help you."
    - ✅ Do this: "Let me help based on what you've described. If you remember any details from the discussion, that would be helpful."
 
-2. **Verify information against current code** – Assume advice from older 
-
-
+2. **Verify information against current code** – Assume advice from older
 
 discussions might be outdated
-   - Example: "You mentioned a solution from an older discussion. Let me check if that still applies with the current version..."
-   - Be prepared to offer updated guidance if the codebase has changed
+
+- Example: "You mentioned a solution from an older discussion. Let me check if that still applies with the current version..."
+- Be prepared to offer updated guidance if the codebase has changed
 
 3. **Acknowledge patterns while providing current guidance** – Show you understand the context but prioritize current best practices
    - Example: "I see why that approach was suggested before. With our current code, here's the recommended way to do this..."

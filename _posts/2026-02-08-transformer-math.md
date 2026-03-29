@@ -29,11 +29,11 @@ This `6PT` rule holds for reasonable context lengths (`T < 8D`) and explains why
 
 ## 📊 Transformer Accounting
 
-| Component | Params/layer | FLOPs/layer (training) |
-|---|---|---|
-| **MLP** | `3DF` | `18BTDF` |
-| **Attention** | `4D²` | `24BTD² + 12BT²D` |
-| **Vocab** | `DV` | `12BTDV` |
+| Component     | Params/layer | FLOPs/layer (training) |
+| ------------- | ------------ | ---------------------- |
+| **MLP**       | `3DF`        | `18BTDF`               |
+| **Attention** | `4D²`        | `24BTD² + 12BT²D`      |
+| **Vocab**     | `DV`         | `12BTDV`               |
 
 **Key Takeaway**: MLP dominates params (75%) and FLOPs (when `T < 8D`).
 
@@ -46,6 +46,7 @@ This `6PT` rule holds for reasonable context lengths (`T < 8D`) and explains why
 **Question**: `D=4096`, `F=16K`, `V=32K`, `L=64`. Total params? Attention fraction? KV cache/token?
 
 **My Answer**:
+
 - **MLP**: `3DF × 64 = 12.6B`
 - **Attention**: `4D² × 64 = 4.3B`
 - **Vocab**: `DV = 131M`
@@ -64,6 +65,7 @@ This `6PT` rule holds for reasonable context lengths (`T < 8D`) and explains why
 **Question**: Arithmetic intensity of self-attention? When is it FLOPs-bound?
 
 **My Answer**:
+
 - **Bytes**: `3BTNH` (K, Q, V tensors)
 - **FLOPs**: `4BT²NH` (Q·Kᵀ + Attention·V)
 - **AI**: `4T/3` (grows linearly with `T`)
@@ -78,6 +80,7 @@ This `6PT` rule holds for reasonable context lengths (`T < 8D`) and explains why
 **Question**: At what sequence length do attention FLOPs equal projection FLOPs?
 
 **My Answer**:
+
 - **Attention**: `2BT²NH`
 - **Projections** (Q,K,V,O): `4BTDNH`
 - **Equal when**: `T = 2D`
@@ -91,6 +94,7 @@ This `6PT` rule holds for reasonable context lengths (`T < 8D`) and explains why
 **Question**: Trained for 2.79M H800-hours on 14.8T tokens with 37B activated params (FP8). What's the MFU?
 
 **My Answer**:
+
 - **Required FLOPs**: `6 × 37e9 × 14.8e12 = 3.28e24`
 - **H800 FP8 FLOPs/s**: `1.513e15`
 - **Available compute**: `1.513e15 × 2.79e6 × 3600 = 1.52e25`
@@ -105,6 +109,7 @@ This `6PT` rule holds for reasonable context lengths (`T < 8D`) and explains why
 **Question**: What batch size makes an MoE compute-bound on TPU v5e? For DeepSeek (`E=256`, `k=8`)?
 
 **My Answer**:
+
 - **Activates**: `k` experts per token
 - **Loads**: All `E` experts
 - **Compute-bound when**: `B > (E/2k) × 240`
@@ -135,4 +140,4 @@ All my notes and implementations: [Model_scaling_jax](https://github.com/YashJay
 
 ---
 
-*Economics beats elegance.*
+_Economics beats elegance._

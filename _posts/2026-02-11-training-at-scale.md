@@ -29,12 +29,12 @@ $$
 
 ## 🔧 The 4 Parallelism Strategies
 
-| Strategy | What gets sharded | Critical batch size (TPU v5p) |
-|---|---|---|
-| **Data Parallel (DP)** | Activations (batch) | `B/N > 2550` |
-| **FSDP (ZeRO-3)** | Activations + weights + optimizer | `B/N > 850` (3-axis) |
-| **Tensor Parallel (TP)** | Activations (D), weights (F) | `Y < M_Y F/2550` (8-16 way) |
-| **FSDP + TP** | Both! | `B/N > 235` (for LLaMA-2 13B) |
+| Strategy                 | What gets sharded                 | Critical batch size (TPU v5p) |
+| ------------------------ | --------------------------------- | ----------------------------- |
+| **Data Parallel (DP)**   | Activations (batch)               | `B/N > 2550`                  |
+| **FSDP (ZeRO-3)**        | Activations + weights + optimizer | `B/N > 850` (3-axis)          |
+| **Tensor Parallel (TP)** | Activations (D), weights (F)      | `Y < M_Y F/2550` (8-16 way)   |
+| **FSDP + TP**            | Both!                             | `B/N > 235` (for LLaMA-2 13B) |
 
 ---
 
@@ -45,6 +45,7 @@ $$
 **Question**: Training LLaMA-2 13B with BS=16M tokens using Adam (bf16 params, fp32 optimizer, checkpoint 3 matmuls/layer). How much memory?
 
 **My Answer**:
+
 - **Parameters** (bf16): `13B × 2 bytes = 26 GB`
 - **Optimizer** (Adam, fp32): `13B × 8 bytes = 104 GB`
 - **Activations** (bf16, checkpointing):
@@ -60,17 +61,23 @@ $$
 **Question**: Train with BS=3M tokens, 32K context on TPU v5p 16×16×16 (4096 chips). Which strategies work?
 
 #### Pure Data Parallelism?
+
 ❌ **No** (two reasons)
+
 - **Memory**: `130 GB` (params + optimizer) > `96 GB/chip`
 - **Comms**: `B/N = 732 < 2550` → Communication-bound
 
 #### Pure FSDP?
+
 ⚠️ **Barely, but comms-bound**
+
 - **Memory**: `7.85 TB / 4096 = 2 GB/chip` ✓ Fits!
 - **Comms**: `732 < 850` (for 3-axis FSDP) → **Communication-bound**
 
 #### Mixed FSDP + Tensor Parallelism?
+
 ✅ **Yes!**
+
 - **Compute-bound check**: `B/N > α²/(2M_X M_Y F) = 235`
   - Actual: `732 > 235` ✓
 - **Optimal X**: `X_opt = √(BN M_X/(M_Y F)) = 1333`
@@ -85,16 +92,21 @@ $$
 ## 🧠 What I Learned
 
 ### The Mesh is Magic
+
 JAX's `Mesh({X:16, Y:16, Z:16})` is **topology-agnostic**. You specify **logical** axes and JAX handles the physical routing. The same sharding code works on 4×4×4, 8×8×8, or 16×16×16 slices — JAX abstracts the hardware! 🤯
 
 ### Activations Dominate Memory
+
 `42 TB` activations vs `26 GB` params = **1,615× difference**. Gradient checkpointing is mandatory, not optional.
 
 ### Each Strategy Has a Wall
+
 Below the critical batch size, you're paying for chips that are idle waiting on communication.
 
 ### 32K+ Context Changes Everything
+
 The book ignores long context because for training at T<32K, **MLP still dominates FLOPs** (~75%). But beyond 32K:
+
 - **Attention becomes `O(T²)`** → Flash Attention is mandatory
 - **Ring Attention** splits attention across chips
 - **Context Parallelism** treats sequence dimension like batch
@@ -106,12 +118,14 @@ At T=128K, attention activations are **16× MLP activations**. This changes the 
 ## 📐 Quick Reference
 
 **When to use each strategy**:
+
 - **DP**: Model fits on 1 chip, large batch
 - **FSDP**: Model doesn't fit, medium batch (`B/N > 850`)
 - **FSDP + TP**: Small batch (`B/N > 235` for LLaMA-2)
 - **Pipeline**: Cross-pod scaling, GPU clusters
 
 **Critical formulas**:
+
 - **Optimal FSDP**: `X_opt = √(BN M_X/(M_Y F))`
 - **Training time**: `6PT / (C × N × MFU)` (the **6PT rule**!)
 
@@ -127,4 +141,4 @@ All my notes and implementations: [Model_scaling_jax](https://github.com/YashJay
 
 ---
 
-*Sharding is economics: minimize communication, maximize compute.*
+_Sharding is economics: minimize communication, maximize compute._

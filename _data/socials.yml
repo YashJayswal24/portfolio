@@ -14,7 +14,7 @@ custom_social: # can be any name here other than the ones already defined in the
 #   url: https://www.linkedin.com/in/yash-jayswal/
 # codeforces: nemesis_R # This was causing the crash because it lacked a logo
 # rss_icon: true
-# scholar_userid: 
+# scholar_userid:
 
 # If you want to add Codeforces, do it like this:
 # custom_social:

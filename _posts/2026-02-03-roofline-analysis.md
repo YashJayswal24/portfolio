@@ -9,7 +9,7 @@ giscus_comments: false
 related_posts: true
 ---
 
-After understanding the *why* behind strong scaling in [Part 0]({% post_url 2026-02-02-scaling-llms-intro %}), I dove into **Part 1: Roofline Analysis** from the [JAX Scaling Book](https://jax-ml.github.io/scaling-book/roofline/).
+After understanding the _why_ behind strong scaling in [Part 0]({% post_url 2026-02-02-scaling-llms-intro %}), I dove into **Part 1: Roofline Analysis** from the [JAX Scaling Book](https://jax-ml.github.io/scaling-book/roofline/).
 
 This section is all about answering one question: **Is my operation limited by compute, memory, or communication?**
 
@@ -26,6 +26,7 @@ $$
 When AI exceeds the hardware's threshold, we're **compute-bound** (good). Below that, we're **memory-bound** (wasting FLOPs/s).
 
 For TPU v5e:
+
 - Peak FLOPs/s: `1.97e14`
 - HBM Bandwidth: `8.2e11 bytes/s`
 - **Critical AI**: `~240 FLOPs/byte`
@@ -39,6 +40,7 @@ For TPU v5e:
 **Question**: How does int8 quantization change the roofline?
 
 **My Analysis**:
+
 - **Bytes**: `BD + DF` (loaded), `BF` (written)
 - **OPs**: `2*BDF` (int8 has 2x peak OPs/s vs. bf16)
 - **AI**: `2*BDF / (BD + DF + BF) ≈ 2*B` (when `B << D, F`)
@@ -55,6 +57,7 @@ For TPU v5e:
 **Setup**: `bf16[B,D] * int8[D,F] → bf16[B,F]`
 
 **My Analysis**:
+
 - **FLOPs**: Still `2*BDF` (bf16 compute)
 - **Bytes**: `2*BD + DF + 2*BF ≈ DF` (weights are 1 byte each!)
 - **AI**: `2*BDF / DF = 2*B`
@@ -83,6 +86,7 @@ For TPU v5e:
 **Setup**: `int8[B,D] * int8[B,D,F] → int8[B,F]`
 
 **My Analysis**:
+
 - **Bytes**: `BD + BDF + BF`
 - **OPs**: `2*BDF`
 - **AI**: `2*DF / (D + DF + F) ≈ 2` (when `DF >> D, F`)
@@ -96,10 +100,12 @@ For TPU v5e:
 **Question**: What's the batch size threshold for an H100 GPU?
 
 **Specs**:
+
 - Peak FLOPs/s: `9.895e14` (accounting for structured sparsity)
 - HBM Bandwidth: `3.35 TB/s`
 
 **My Answer**:
+
 - **Critical AI**: `9.895e14 / (2 * 3.35e12) ≈ 295`
 - **Threshold**: `B > 295`
 
@@ -127,4 +133,4 @@ All my notes and future implementations are in the [Model_scaling_jax](https://g
 
 ---
 
-*Understanding when you hit the wall is the first step to breaking through it.*
+_Understanding when you hit the wall is the first step to breaking through it._

@@ -24,10 +24,10 @@ In my implementation, I focused on making the gates "feel" like what they actual
 
 ## 🚪 What each gate "feels" like
 
-1. **Forget Gate:** *The Eraser.* It looks at the past and asks: "Is this still worth remembering?"
-2. **Input Gate:** *The Filter.* It decides which parts of the *new* input are actually useful.
-3. **Candidate Memory:** *The Writer.* It prepares the new "draft" of information using `tanh`.
-4. **Output Gate:** *The Presenter.* It takes the long-term memory and decides what to show for the current time step.
+1. **Forget Gate:** _The Eraser._ It looks at the past and asks: "Is this still worth remembering?"
+2. **Input Gate:** _The Filter._ It decides which parts of the _new_ input are actually useful.
+3. **Candidate Memory:** _The Writer._ It prepares the new "draft" of information using `tanh`.
+4. **Output Gate:** _The Presenter._ It takes the long-term memory and decides what to show for the current time step.
 
 ---
 

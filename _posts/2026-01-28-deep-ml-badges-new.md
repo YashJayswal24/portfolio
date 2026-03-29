@@ -13,11 +13,11 @@ I'm thrilled to announce that I've earned **3 new badges** on [Deep-ML](https://
 
 ## 🎖️ Badges Earned
 
-| Badge | Collection | Credential ID |
-|---|---|---|
+| Badge                      | Collection                                                                                | Credential ID                       |
+| -------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------- |
 | **Machine Learning Badge** | [Machine Learning](https://www.deep-ml.com/credentials/DMLBADGE-MACHINELEARNING-mkxs68e8) | `DMLBADGE-MACHINELEARNING-mkxs68e8` |
-| **Deep Learning Badge** | [Deep Learning](https://www.deep-ml.com/credentials/DMLBADGE-DEEPLEARNING-mkxned67) | `DMLBADGE-DEEPLEARNING-mkxned67` |
-| **DenseNet Badge** | [DenseNet](https://www.deep-ml.com/credentials/DMLBADGE-DENSENET-mkxuj45v) | `DMLBADGE-DENSENET-mkxuj45v` |
+| **Deep Learning Badge**    | [Deep Learning](https://www.deep-ml.com/credentials/DMLBADGE-DEEPLEARNING-mkxned67)       | `DMLBADGE-DEEPLEARNING-mkxned67`    |
+| **DenseNet Badge**         | [DenseNet](https://www.deep-ml.com/credentials/DMLBADGE-DENSENET-mkxuj45v)                | `DMLBADGE-DENSENET-mkxuj45v`        |
 
 ## 🧠 What I Learned
 
@@ -38,4 +38,4 @@ All my solutions are documented and available on GitHub:
 
 ---
 
-*On to the next challenge!*
+_On to the next challenge!_

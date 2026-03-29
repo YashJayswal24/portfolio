@@ -2,10 +2,10 @@
 layout: page
 title: DSCoin - Cryptocurrency
 description: Built cryptocurrency system using SHA256 hashing and implemented mechanism to validate transactions.
-img: 
+img:
 importance: 1
 category: work
-related_publications: 
+related_publications:
 ---
 
 [GitHub Repository](https://github.com/YashJayswal24/Crypto_Chain)
@@ -14,5 +14,6 @@ related_publications:
 Built cryptocurrency system using SHA256 hashing and implemented mechanism to validate transactions.
 
 **Highlights:**
+
 - Proof-of-work Blockchain in Java
 - Tree-structured Blockchain & broadcasting

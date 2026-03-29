@@ -15,12 +15,12 @@ After [training LLaMA 3]({% post_url 2026-03-02-training-llama3 %}), Part 7 is a
 
 ## 🎯 The Core Dichotomy
 
-| | **Prefill** | **Generation** |
-|---|---|---|
-| What | Process prompt, fill KV cache | Sample one token at a time |
-| Bound | **Compute** (like training) | **Memory-bandwidth (always!)** |
-| Sharding | TP + Sequence parallel | **Model parallel only** |
-| Batch | Can batch prompts together | Sequential dependency — hard to batch |
+|          | **Prefill**                   | **Generation**                        |
+| -------- | ----------------------------- | ------------------------------------- |
+| What     | Process prompt, fill KV cache | Sample one token at a time            |
+| Bound    | **Compute** (like training)   | **Memory-bandwidth (always!)**        |
+| Sharding | TP + Sequence parallel        | **Model parallel only**               |
+| Batch    | Can batch prompts together    | Sequential dependency — hard to batch |
 
 The key new data structure: **the KV cache** = `2 × L × K × H × T` bytes per sequence.
 
@@ -33,11 +33,11 @@ For the 18.4B model I worked through (L=64, K=8, H=256): **262 kB per token!** A
 During generation, to be compute-bound on linear layers:
 $$B > B_{crit} = \frac{C}{W_{hbm}} \times \frac{\text{bits/param}}{\text{bits/activation}}$$
 
-| Setup | B_crit |
-|---|---|
-| bf16 params on v5e | **240 tokens** |
-| int8 params + bf16 FLOPs on v5e | **120 tokens** |
-| MoE (E=16, k=2) | **1920 tokens** |
+| Setup                           | B_crit          |
+| ------------------------------- | --------------- |
+| bf16 params on v5e              | **240 tokens**  |
+| int8 params + bf16 FLOPs on v5e | **120 tokens**  |
+| MoE (E=16, k=2)                 | **1920 tokens** |
 
 Attention is **always** bandwidth-bound during generation, regardless of batch size. You can never escape this.
 
@@ -80,6 +80,7 @@ This is the **theoretical floor** for generation step time. Below this is physic
 ### Q4: Sharding Rules for Generation
 
 During generation, you **cannot use**:
+
 - ❌ FSDP — ICI is 9× slower than HBM; moving weights over ICI adds latency
 - ❌ Data parallelism — replicates params without helping bandwidth
 - ❌ Sequence parallelism — no sequence to split!
@@ -117,7 +118,7 @@ vs traditional: $T_{3D} = \frac{4BD}{3 W_{ici}}$
 **The inference hierarchy** (most important constraints to check in order):
 
 1. **Memory**: Can the model + KV cache fit? → `params + B × KV_per_seq ≤ N × HBM`
-2. **Critical batch**: Are we compute or bandwidth bound? → `B vs B_crit`  
+2. **Critical batch**: Are we compute or bandwidth bound? → `B vs B_crit`
 3. **Sharding**: What dimensions can we split? → prefill: anything; generation: model parallel only
 4. **Latency floor**: `params / (N_chips × W_hbm)` — physically impossible to go below this
 
@@ -137,4 +138,4 @@ Full notes and solutions: [Model_scaling_jax](https://github.com/YashJayswal24/M
 
 ---
 
-*Inference is simple: reduce bytes, increase batch, accept that attention will always be slow.*
+_Inference is simple: reduce bytes, increase batch, accept that attention will always be slow._

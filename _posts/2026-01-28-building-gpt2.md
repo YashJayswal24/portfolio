@@ -22,12 +22,15 @@ Building a generator like this forces you to confront the reality of the archite
 ## 💡 Lightbulb Moments
 
 ### Dimensions are Everything
+
 I used to get confused by the endless reshaping in PyTorch/NumPy. But during this project, I realized that **noting down the dimensions** (like `(seq_len, d_model)`) makes everything fall into place. It turns abstract math into a shape-matching puzzle.
 
 ### Layer Norm vs. Batch Norm
-I got stuck on which axis to normalize for a while. Then it clicked: **Layer Norm gives every feature a fair shot.** Unlike Batch Norm which looks across the batch, Layer Norm standardizes the features for a *single example*, ensuring that no single feature dominates the gradients.
+
+I got stuck on which axis to normalize for a while. Then it clicked: **Layer Norm gives every feature a fair shot.** Unlike Batch Norm which looks across the batch, Layer Norm standardizes the features for a _single example_, ensuring that no single feature dominates the gradients.
 
 ### The Cost of "Memory-less" Generation
+
 Writing the generation loop manually really highlights the inefficiency. To generate the 5th token, we re-process the first 4. This redundancy is exactly why **KV Caching** is a critical optimization in modern LLM serving!
 
 ---

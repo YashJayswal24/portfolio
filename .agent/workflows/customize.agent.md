@@ -323,9 +323,4 @@ When helping users customize their site:
 8. **Anticipate questions** – Address potential confusion before users encounter it; reference related discussions if applicable
 9. **Use plain language** – Avoid or explain technical jargon; prioritize clarity over verbosity
 
-
-
 follow ".agent\workflows\customize.agent.extension.md" workflow for more instructions
-
-
-

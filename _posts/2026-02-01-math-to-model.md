@@ -40,4 +40,4 @@ Implementing this from scratch brought back memories of college linear algebra. 
 
 ---
 
-*Solving these problems is the best way to keep the mathematical intuition sharp!*
+_Solving these problems is the best way to keep the mathematical intuition sharp!_

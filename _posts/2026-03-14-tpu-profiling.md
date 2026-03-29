@@ -20,9 +20,11 @@ But how do we know if our models are actually hitting these limits? The answer l
 When you run `y = jnp.dot(x, W)` on a TPU, JAX traces your computation and compiles it down several levels. Performance debugging happens at the **HLO (High Level Optimizer)** level.
 
 Reading an HLO operation gives you immediate insights into memory access inefficiencies. For example:
+
 ```text
 bf16[32,32,8192]{2,1,0:T(8,128)(2,1)S(1)}
 ```
+
 - **Shape & Type:** `bfloat16` tensor, `[32, 32, 8192]`.
 - **Layout (`{2,1,0}`)**: Data dimension ordering (critical for systolic array throughput).
 - **Tiling (`T(8,128)(2,1)`)**: The physical block chunks memory is padded into. Poor tiling can inflate memory sizes by 1.6x.
@@ -35,10 +37,12 @@ bf16[32,32,8192]{2,1,0:T(8,128)(2,1)S(1)}
 Here's the most satisfying part of TPU profiling: **the math actually works.**
 
 Imagine a single un-sharded Dense Matrix Multiply: `x @ W`.
+
 - `x` = `(32, 1024, 8192)`
 - `W` = `(8192, 32768)`
 
 **The Math:**
+
 - Total FLOPs = `2 × B × T × D × F`
 - FLOPs = `2 × 32 × 1024 × 8192 × 32768` = **17.59 TFLOPs**.
 - Peak hardware speed (TPU v5e) = **197 TFLOPs/s**.
@@ -56,16 +60,19 @@ We hit nearly 95% MFU (Model FLOPs Utilization) on a single device, directly pro
 When taking a simple Transformer and scaling it to an 8-core v5e topology, XLA shines—but it can also make terrible decisions if you don't constrain it.
 
 Let's profile the `jnp.dot(x, w1)` projection:
+
 - `x` = `[8, 1024, 8192]`
 - `w1` = `[8192, 16384]` (FFW expansion)
 
 **Step 1: Data Parallelism**
+
 - Total FLOPs over 8 chips = 2.19 TFLOPs.
 - Divided by 8 chips = **275 GFLOPs per chip**.
 - Expected Time: `275e9 / 1.97e14` = **1.39 ms**.
 - **Trace observed: 1.43 ms.** ✓
 
 **Step 2: Logits Projection**
+
 - Matrix is 2x larger (`d_ff` vs `vocab` where vocab is 32,768).
 - Expected Time: `1.39 ms × 2` = **2.78 ms**.
 - **Trace observed: 2.91 ms.** ✓
@@ -84,4 +91,4 @@ The profiler reveals `6 + 6 ms` wasted purely on inter-chip communication overhe
 
 ---
 
-*Up Next: Part 10 - JAX Parallelism Deep Dive.*
+_Up Next: Part 10 - JAX Parallelism Deep Dive._

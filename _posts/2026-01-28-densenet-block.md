@@ -9,7 +9,7 @@ giscus_comments: false
 related_posts: true
 ---
 
-I implemented a **DenseNet Dense Block** from scratch on [Deep-ML](https://www.deep-ml.com/). DenseNet's core idea is simple: concatenate *all* previous feature maps into each layer.
+I implemented a **DenseNet Dense Block** from scratch on [Deep-ML](https://www.deep-ml.com/). DenseNet's core idea is simple: concatenate _all_ previous feature maps into each layer.
 
 ## 💡 Quick Learnings
 
@@ -18,13 +18,13 @@ I implemented a **DenseNet Dense Block** from scratch on [Deep-ML](https://www.d
 
 ## ⚖️ DenseNet vs. ResNet
 
-| Feature | DenseNet | ResNet |
-|---|---|---|
-| Connection | Concatenation | Addition |
-| Parameters | Fewer | More |
-| GPU Memory | **High** | Low |
-| Training Speed | **Slow** | Fast |
-| Best For | Max accuracy | Practical deployment |
+| Feature        | DenseNet      | ResNet               |
+| -------------- | ------------- | -------------------- |
+| Connection     | Concatenation | Addition             |
+| Parameters     | Fewer         | More                 |
+| GPU Memory     | **High**      | Low                  |
+| Training Speed | **Slow**      | Fast                 |
+| Best For       | Max accuracy  | Practical deployment |
 
 **Verdict:** Same goal (gradient flow), but ResNet is more practical.
 
@@ -37,10 +37,10 @@ import numpy as np
 
 def dense_net_block(input_data, num_layers, growth_rate, kernels, kernel_size=(3, 3)):
     N, H, W, C0 = input_data.shape
-    
+
     def relu(x):
         return np.maximum(0.0, x)
-    
+
     def conv2d(X, kernel, stride=1, padding='zero'):
         n_b, n_h, n_w, n_c = X.shape
         k_h, k_w, c_in, c_out = kernel.shape
@@ -59,7 +59,7 @@ def dense_net_block(input_data, num_layers, growth_rate, kernels, kernel_size=(3
                         w_end = w_strt + k_w
                         out[b, h, w, c] = np.sum(X_padded[b, h_strt:h_end, w_strt:w_end, :] * kernel[:, :, :, c])
         return out
-    
+
     out = input_data
     for lay_idx in range(num_layers):
         out = relu(input_data)

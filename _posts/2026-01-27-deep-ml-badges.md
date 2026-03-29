@@ -14,6 +14,7 @@ I'm excited to share that I've earned two badges from [Deep-ML](https://www.deep
 ## 🏆 Certifications Earned
 
 ### Attention Is All You Need Badge
+
 Successfully completed all problems in the **Attention Is All You Need** collection, covering the foundational concepts of the Transformer architecture that revolutionized NLP and beyond.
 
 - **Issued:** January 27, 2026
@@ -23,6 +24,7 @@ Successfully completed all problems in the **Attention Is All You Need** collect
 ---
 
 ### ResNet Badge
+
 Successfully completed all problems in the **ResNet** collection, mastering residual learning and skip connections that enabled training of very deep neural networks.
 
 - **Issued:** January 27, 2026

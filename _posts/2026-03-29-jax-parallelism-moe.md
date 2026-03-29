@@ -9,9 +9,9 @@ giscus_comments: false
 related_posts: true
 ---
 
-*Up Next* was the promise at the end of [Part 9 — TPU Profiling](/blog/2026/tpu-profiling). We knew *what* to profile. Now we learn *how to write code that gives the compiler no room to make bad decisions.*
+_Up Next_ was the promise at the end of [Part 9 — TPU Profiling](/blog/2026/tpu-profiling). We knew _what_ to profile. Now we learn _how to write code that gives the compiler no room to make bad decisions._
 
-This is Part 10 of my journey through [*How To Scale Your Model*](https://jax-ml.github.io/scaling-book/jax-stuff/) — and it's the most hands-on chapter yet. The full working code lives in [`moe-scaling-on-tpu.ipynb`](https://www.kaggle.com/code/reptor420/moe-scaling-on-tpu/notebook) (Kaggle, TPU v5e-8), and the implementation folder is at [`10_jax_parallelism_moe/`](https://github.com/YashJayswal24/Model_scaling_jax/tree/main/10_jax_parallelism_moe).
+This is Part 10 of my journey through [_How To Scale Your Model_](https://jax-ml.github.io/scaling-book/jax-stuff/) — and it's the most hands-on chapter yet. The full working code lives in [`moe-scaling-on-tpu.ipynb`](https://www.kaggle.com/code/reptor420/moe-scaling-on-tpu/notebook) (Kaggle, TPU v5e-8), and the implementation folder is at [`10_jax_parallelism_moe/`](https://github.com/YashJayswal24/Model_scaling_jax/tree/main/10_jax_parallelism_moe).
 
 ---
 
@@ -19,11 +19,11 @@ This is Part 10 of my journey through [*How To Scale Your Model*](https://jax-ml
 
 JAX gives you three different "contracts" with the compiler:
 
-| Mode | API | Who decides communication? |
-|---|---|---|
-| **Auto** | `jax.jit` + Auto axes | XLA/Shardy compiler |
+| Mode         | API                       | Who decides communication?            |
+| ------------ | ------------------------- | ------------------------------------- |
+| **Auto**     | `jax.jit` + Auto axes     | XLA/Shardy compiler                   |
 | **Explicit** | `jax.jit` + Explicit axes | JAX type system (errors on ambiguity) |
-| **Manual** | `jax.shard_map` | **You** |
+| **Manual**   | `jax.shard_map`           | **You**                               |
 
 The book frames this beautifully: modes 1 and 2 let you write single-device code and trust the system to scale it. Mode 3 — `shard_map` — hands you a **local, per-device view** of the array, and every byte of communication is your responsibility.
 
@@ -35,7 +35,7 @@ That sounds scary. But once you see what the compiler does wrong on a real MoE m
 
 **Mesh setup:** 8 TPUs arranged as `(x=2, y=4)`, `AxisType.Explicit`.
 
-The first exercise: given an array `A: float32[S_X, D_Y]` sharded across the mesh, compute the mean *within each (X, Y) shard* — resulting in an `[X, Y]` output with no cross-device communication.
+The first exercise: given an array `A: float32[S_X, D_Y]` sharded across the mesh, compute the mean _within each (X, Y) shard_ — resulting in an `[X, Y]` output with no cross-device communication.
 
 ### With `jax.jit`
 
@@ -63,7 +63,7 @@ def avg_shard_map(arr):
     return jnp.mean(arr).reshape((1, 1))
 ```
 
-Same output, same zero-communication guarantee — but now the device-local view makes this *obvious* from the code rather than implicit in the compiler.
+Same output, same zero-communication guarantee — but now the device-local view makes this _obvious_ from the code rather than implicit in the compiler.
 
 For the roll-difference function (`roll(x, shift, axis=0) - x` within each X shard), `shard_map` makes the intent equally clear:
 
@@ -80,6 +80,7 @@ Result with `shift=1`: rows alternate between `-8` and `+8` — exactly the intr
 ## Problem 2: Mixture of Experts — The 43× Speedup
 
 This is the centerpiece. We have:
+
 - `W: float32[E, D, F]` — 8 expert weight matrices
 - `A: float32[S, D]` — 2048 token activations
 - `B: int32[S]` — routing assignments (which expert processes each token)
@@ -101,11 +102,11 @@ def process_exp(carry, e):
 out, _ = jax.lax.scan(process_exp, output, jnp.arange(E))
 ```
 
-When I profiled this with `jax.profiler.trace`, XLA had made a decision I didn't want: it sharded *both* `A` and `W` along `x` (data-parallel). Every device had to gather the full activation matrix before running its experts. **Latency: 73 ms.** A disaster at production scale.
+When I profiled this with `jax.profiler.trace`, XLA had made a decision I didn't want: it sharded _both_ `A` and `W` along `x` (data-parallel). Every device had to gather the full activation matrix before running its experts. **Latency: 73 ms.** A disaster at production scale.
 
 ### Pipelined All-to-All: 1.7 ms (43× faster)
 
-The fix is explicit routing: instead of gathering *all* activations to every device, use **All-to-All** to send only the tokens that belong to each expert.
+The fix is explicit routing: instead of gathering _all_ activations to every device, use **All-to-All** to send only the tokens that belong to each expert.
 
 The algorithm (device-local view via `shard_map`):
 
@@ -130,7 +131,7 @@ for i in range(num_scan_steps):
 
 **Latency: 1.7 ms.** A **43× speedup** over the naive implementation.
 
-The beauty here: with `check_vma=True` on the `shard_map`, JAX *verifies* that no accidental communication was inserted. The only network traffic is the two explicit All-to-All calls.
+The beauty here: with `check_vma=True` on the `shard_map`, JAX _verifies_ that no accidental communication was inserted. The only network traffic is the two explicit All-to-All calls.
 
 ### Top-k Routing (k=2): Zero Overhead
 
@@ -169,7 +170,7 @@ For the down-projection `Tmp[BX, FY] @ W2[FY, D] → Out[BX, DY]`:
 
 **JAX built-in `psum_scatter`:** ~1.01 ms — the baseline.
 
-**Manual ring (unidirectional, y-1 steps):** ~1.2 ms. Counterintuitively *slower* — XLA's built-in has hardware-level stream fusion we can't replicate.
+**Manual ring (unidirectional, y-1 steps):** ~1.2 ms. Counterintuitively _slower_ — XLA's built-in has hardware-level stream fusion we can't replicate.
 
 **Recursive halving (bidirectional, log₂y steps):**
 
@@ -190,7 +191,7 @@ Composing AllGather up-projection + recursive halving ReduceScatter down-project
 In[BX, DY] → AllGather(y) → [BX, D] → Win[D, FY] → GeLU → recursive_halving_RS → Out[BX, DY]
 ```
 
-**Latency: ~1.25 ms** — parity with `jax.jit` baseline (~1.2 ms). The overlap provides *no additional speed here*, confirming the book's note: XLA already handles this internally. But what we gain is **transparency** — every byte of communication is visible in the Perfetto trace.
+**Latency: ~1.25 ms** — parity with `jax.jit` baseline (~1.2 ms). The overlap provides _no additional speed here_, confirming the book's note: XLA already handles this internally. But what we gain is **transparency** — every byte of communication is visible in the Perfetto trace.
 
 ---
 
@@ -212,15 +213,15 @@ Setting `C = 2 × (S / (E × N))` gave us ~8 communication rounds. Too small →
 
 ## Performance Summary
 
-| Experiment | Latency | Key Takeaway |
-|---|---|---|
-| Naive `jit` MoE | 73 ms | AllGather on activations is catastrophic |
-| **Pipelined All-to-All MoE** | **1.7 ms** | **43× speedup** with explicit routing |
-| Top-k MoE (k=2) | 1.7 ms | Zero overhead over Top-1 |
-| `jit` Auto MLP | 1.2 ms | XLA baseline |
-| `psum_scatter` ReduceScatter | 1.01 ms | Best built-in option |
-| Recursive halving RS | ~1.1 µs | Near-optimal manual variant |
-| Overlapped Transformer MLP | 1.25 ms | Transparent comm, JIT-speed parity |
+| Experiment                   | Latency    | Key Takeaway                             |
+| ---------------------------- | ---------- | ---------------------------------------- |
+| Naive `jit` MoE              | 73 ms      | AllGather on activations is catastrophic |
+| **Pipelined All-to-All MoE** | **1.7 ms** | **43× speedup** with explicit routing    |
+| Top-k MoE (k=2)              | 1.7 ms     | Zero overhead over Top-1                 |
+| `jit` Auto MLP               | 1.2 ms     | XLA baseline                             |
+| `psum_scatter` ReduceScatter | 1.01 ms    | Best built-in option                     |
+| Recursive halving RS         | ~1.1 µs    | Near-optimal manual variant              |
+| Overlapped Transformer MLP   | 1.25 ms    | Transparent comm, JIT-speed parity       |
 
 **Hardware:** Kaggle TPU v5e-8 (8 cores) · **Total runtime:** 72 seconds · **9 AOT-compiled profiler traces**
 
@@ -235,4 +236,4 @@ Setting `C = 2 × (S / (E × N))` gave us ~8 communication rounds. Too small →
 
 ---
 
-*Part 10 complete. The scaling book series is done — final conclusions live in [Part 11](https://jax-ml.github.io/scaling-book/conclusion).*
+_Part 10 complete. The scaling book series is done — final conclusions live in [Part 11](https://jax-ml.github.io/scaling-book/conclusion)._

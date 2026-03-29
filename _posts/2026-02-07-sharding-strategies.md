@@ -18,6 +18,7 @@ This section is all about the **4 core communication primitives** that enable di
 ## 🎯 The Big Idea
 
 When you split a matrix across 64 TPUs and multiply it, you need to:
+
 1. **Move data** between chips (communication)
 2. **Do local math** on each chip (computation)
 
@@ -27,12 +28,12 @@ The art is choosing **which data to move, when, and how**.
 
 ## 🔧 The 4 Core Primitives
 
-| Primitive | What it does | Cost |
-|---|---|---|
-| **AllGather** | `[Aₓ,B] → [A,B]` | `V / W_ici` |
-| **ReduceScatter** | `[A,B]{Uₓ} → [Aₓ,B]` | `V / W_ici` |
-| **AllReduce** | `[A,B]{Uₓ} → [A,B]` | `2V / W_ici` |
-| **AllToAll** | `[A,Bₓ] → [Aₓ,B]` | `V / (4W_ici)` |
+| Primitive         | What it does         | Cost           |
+| ----------------- | -------------------- | -------------- |
+| **AllGather**     | `[Aₓ,B] → [A,B]`     | `V / W_ici`    |
+| **ReduceScatter** | `[A,B]{Uₓ} → [Aₓ,B]` | `V / W_ici`    |
+| **AllReduce**     | `[A,B]{Uₓ} → [A,B]`  | `2V / W_ici`   |
+| **AllToAll**      | `[A,Bₓ] → [Aₓ,B]`    | `V / (4W_ici)` |
 
 **The Golden Rule**: Cost depends only on **array size** and **bandwidth**, NOT number of devices!
 
@@ -43,10 +44,12 @@ The art is choosing **which data to move, when, and how**.
 ### Problem 4: Strategy Comparison
 
 **Question**: Multiply `X[B,D] · Y[Dₓ,F]`. Which is faster?
+
 1. AllGather Y, then multiply
 2. Multiply locally, then AllReduce
 
 **My Analysis**:
+
 - **Strategy 1**: `T_comm = 2DF/W`, `T_comp = 2BDF/W_flop`
   - Compute-bound when `B > W_flop/W_ici`
   - **Best for large batches**
@@ -63,14 +66,17 @@ The art is choosing **which data to move, when, and how**.
 **Question**: Analyze 3 real-world sharding schemes on 4×4 TPU v5e.
 
 #### Pattern 1: `A[Iₓ,Jᵧ] · B[Jᵧ,K] → C[Iₓ,K]`
+
 - **AllGatherᵧ** twice → `T_comm = 2JK/(Y·W_ici)`
 - Compute: `2IJK/(XY·W_flop)`
 
 #### Pattern 2: `A[Iₓ,J] · B[Jₓ,Kᵧ] → C[Iₓ,Kᵧ]` (Training)
+
 - **AllGatherₓ** on J → `T_comm = JK/(Y·W_ici)`
 - This is **Data Parallel + Tensor Parallel + ZeRO**
 
 #### Pattern 3: `A[Iₓ,J] · B[J,Kᵧ] → C[Iₓ,Kᵧ]` (Inference)
+
 - **No communication!**
 - This is **pure Tensor Parallel + Data Parallel**
 
@@ -83,6 +89,7 @@ The art is choosing **which data to move, when, and how**.
 **Question**: Shard `In[128,8K] · Wᵢₙ[8K,32K] · Wₒᵤₜ[32K,8K]` on 2×2 v5e with 300MB/TPU.
 
 **My Strategy**:
+
 - **Problem**: Each weight matrix is 536 MB (too big!)
 - **Solution**: Shard weights as `Wᵢₙ[D,Fₓᵧ]`, `Wₒᵤₜ[Fₓᵧ,D]`
 - **Trick**: Fuse `Wᵢₙ · Wₒᵤₜ` first, then ReduceScatter
@@ -101,11 +108,13 @@ The art is choosing **which data to move, when, and how**.
 **My Analysis**:
 
 **Unidirectional**:
+
 - **AllGather**: Every device sends full shard around the ring → `N²` scalars total
 - **AllToAll**: Each device sends partial shards → `N²/2` scalars
 - **Ratio**: `2×`
 
 **Bidirectional**:
+
 - **AllGather**: `D/2` hops, `2N²/D` bytes/hop → `N²` total
 - **AllToAll**: `D/4` hops, `N²/D` bytes/hop → `N²/4` total
 - **Ratio**: `4×`
@@ -134,4 +143,4 @@ All my notes and implementations: [Model_scaling_jax](https://github.com/YashJay
 
 ---
 
-*Sharding isn't about splitting — it's about orchestrating.*
+_Sharding isn't about splitting — it's about orchestrating._

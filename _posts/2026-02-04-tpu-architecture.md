@@ -18,6 +18,7 @@ This section is all about understanding the **bandwidth hierarchy** that governs
 ## 🏗️ The TPU Stack
 
 A TPU is fundamentally simple:
+
 1. **MXU** (Matrix Multiply Unit) — Systolic array doing `bf16[8,128] @ bf16[128,128]` every 8 cycles
 2. **VMEM** (Vector Memory) — 128 MiB on-chip scratchpad
 3. **HBM** (High-Bandwidth Memory) — 16-96 GB depending on generation
@@ -30,12 +31,12 @@ A TPU is fundamentally simple:
 
 ## 📊 The Bandwidth Hierarchy
 
-| Link | Bandwidth | Use Case |
-|---|---|---|
-| **HBM ↔ VMEM** | 1-3 TB/s | Loading weights/activations |
-| **ICI** | 90-180 GB/s per link | Cross-chip sharding |
-| **PCIe** | 16-32 GB/s | Host ↔ TPU |
-| **DCN** | 6-12 GB/s | Cross-pod communication |
+| Link           | Bandwidth            | Use Case                    |
+| -------------- | -------------------- | --------------------------- |
+| **HBM ↔ VMEM** | 1-3 TB/s             | Loading weights/activations |
+| **ICI**        | 90-180 GB/s per link | Cross-chip sharding         |
+| **PCIe**       | 16-32 GB/s           | Host ↔ TPU                  |
+| **DCN**        | 6-12 GB/s            | Cross-pod communication     |
 
 ---
 
@@ -45,7 +46,8 @@ A TPU is fundamentally simple:
 
 **Question**: How long to load a 200B parameter model (bf16) across 32 TPU v4p?
 
-**My Answer**: 
+**My Answer**:
+
 - **Size**: `200e9 × 2 bytes = 4e11 bytes`
 - **Total HBM BW**: `32 × 1.2e12 = 3.84e13 bytes/s`
 - **Time**: `4e11 / 3.84e13 = **10 ms**`
@@ -61,11 +63,13 @@ A TPU is fundamentally simple:
 **My Answers**:
 
 **TPU v5e** (16×16 = 256 chips):
+
 - **FLOPs/s**: `5.04e16` (50 PetaFLOPs)
 - **HBM**: `4 TB`
 - **Hosts**: `8`
 
 **TPU v5p** (16×20×28 = 8960 chips):
+
 - **FLOPs/s**: `4.11e18` (4 ExaFLOPs!)
 - **HBM**: `860 TB`
 - **Hosts**: `2240`
@@ -81,6 +85,7 @@ A TPU is fundamentally simple:
 **Setup**: `bf16[B,D] @ bf16[D,4D]` with PCIe BW = 1.5e10 bytes/s
 
 **My Answer**:
+
 - **Critical AI**: `9.20e14 / 1.5e10 = 6.13e4`
 - **Threshold**: `B > 6133 tokens`
 
@@ -93,6 +98,7 @@ A TPU is fundamentally simple:
 **Question**: Time for `int8[16K,4K] @ int8[B,4K]` on TPU v5e?
 
 **My Answer**:
+
 - **Compute-bound threshold**: `B > 250`
 - **Time** (B > 250): `T = B / 2.93e6` seconds
 
@@ -107,8 +113,9 @@ A TPU is fundamentally simple:
 **Question**: Send `bf16[8,128,8K]` from TPU{0,0} → TPU{3,3} in a 4×4 slice.
 
 **My Answer**:
+
 1. **First byte**: 6 hops × 1μs = **6 μs**
-2. **Full transfer**: 
+2. **Full transfer**:
    - Can split across **2 disjoint paths** (torus!)
    - Time: `1.7e7 / (2 × 4.5e10) = **189 μs**`
 
@@ -121,6 +128,7 @@ A TPU is fundamentally simple:
 **Question**: Copy sharded `int8[128K,128K]` from host DRAM to one TPU, multiply by `bf16[8,128K]`.
 
 **My Breakdown**:
+
 1. **DCN transfer** (host → chips): 66 ms
 2. **ICI aggregation** (chips → TPU{0,0}): **167 ms** ⚠️
 3. **HBM → MXU**: 19 ms
@@ -152,4 +160,4 @@ All my notes and implementations: [Model_scaling_jax](https://github.com/YashJay
 
 ---
 
-*Understanding the hierarchy is half the battle.*
+_Understanding the hierarchy is half the battle._

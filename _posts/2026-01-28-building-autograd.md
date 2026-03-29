@@ -17,7 +17,7 @@ What I loved most about this project was how systematic the commands felt. The c
 
 ### 🔄 Topological Sorting in the Wild
 
-For a long time, I only saw **Topological Sorting** in competitive programming contexts (LeetCode/CodeForces). But in an autograd engine, it's the "secret sauce." It ensures that before we compute the gradient for any node, we've already finished with everything that depends on it. 
+For a long time, I only saw **Topological Sorting** in competitive programming contexts (LeetCode/CodeForces). But in an autograd engine, it's the "secret sauce." It ensures that before we compute the gradient for any node, we've already finished with everything that depends on it.
 
 This simple algorithm turns a messy graph of operations into a perfectly ordered sequence for backpropagation.
 
@@ -35,11 +35,11 @@ Here is my `Value` class that handles the heavy lifting:
 class Value:
     def __init__(self, data, _children=(), _op=''):
         self.data = data
-        self.grad = 0 
+        self.grad = 0
         self._backward = lambda: None
         self._prev = set(_children)
         self._op = _op
-    
+
     def __add__(self, other):
         other = other if isinstance(other, Value) else Value(other)
         out = Value(self.data + other.data, (self, other), '+')
@@ -80,8 +80,9 @@ class Value:
             node._backward()
 ```
 
-Check out the full repository and tests here: 
+Check out the full repository and tests here:
 👉 **[Autograd Project on GitHub](https://github.com/YashJayswal24/deepml-solns/tree/main/autograd-operations)**
 
 ---
-*Next up: Building actual neurons using this autograd engine!*
+
+_Next up: Building actual neurons using this autograd engine!_

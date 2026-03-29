@@ -17,11 +17,11 @@ This chapter is about turning equations into decisions.
 
 ## 🎯 The Hardware Choice: Why TPU v5e?
 
-| TPU | bf16 FLOPs/s | Cost/hr | **FLOPs/$** |
-|---|---|---|---|
-| H100 | 9.9e14 | $10.8 | 3.3e17 |
-| v5p | 4.59e14 | $4.2 | 3.9e17 |
-| **v5e** | **1.97e14** | **$1.2** | **5.8e17 ✓** |
+| TPU     | bf16 FLOPs/s | Cost/hr  | **FLOPs/$**  |
+| ------- | ------------ | -------- | ------------ |
+| H100    | 9.9e14       | $10.8    | 3.3e17       |
+| v5p     | 4.59e14      | $4.2     | 3.9e17       |
+| **v5e** | **1.97e14**  | **$1.2** | **5.8e17 ✓** |
 
 Inference = optimize for **FLOPs per dollar**. v5e wins — it's cheaper even though each chip is slower.
 
@@ -39,30 +39,32 @@ This dwarfs the 70 GB of model parameters!
 
 ## 🔢 Working the Numbers: BS=32, 8k Context, int8
 
-| Component | Memory |
-|---|---|
-| Params (int8) | 70 GB |
+| Component        | Memory                        |
+| ---------------- | ----------------------------- |
+| Params (int8)    | 70 GB                         |
 | KV caches (int8) | `160e3 × 8192 × 32 = 41.9 GB` |
-| **Total** | **~112 GB** |
+| **Total**        | **~112 GB**                   |
 
 Minimum: `112GB / 16GB/chip = 7 chips` → **4×2 (8 chips)**, 4×4 for headroom.
 
 **Decode step latency** (B=32 < B_crit=120, so bandwidth-bound):
+
 ```
 T = (70e9 + 41.9e9) / (8 chips × 8.1e11) = 17ms
 Throughput = 32 / 0.017 / 8 = 235 tok/sec/chip
 ```
+
 On 4×4: same throughput/chip, latency halves to **8.5ms**.
 
 ---
 
 ## ⚡ Critical Batch Sizes by Precision
 
-| Mode | B_crit | Reason |
-|---|---|---|
-| bf16 params + bf16 FLOPs | **240** | `C/W_hbm = 1.97e14/8.1e11` |
-| **int8 params + bf16 FLOPs** | **120** | Half the bytes per param |
-| int8 params + int8 FLOPs | **240** | FLOPs/s doubles, cancels out |
+| Mode                         | B_crit  | Reason                       |
+| ---------------------------- | ------- | ---------------------------- |
+| bf16 params + bf16 FLOPs     | **240** | `C/W_hbm = 1.97e14/8.1e11`   |
+| **int8 params + bf16 FLOPs** | **120** | Half the bytes per param     |
+| int8 params + int8 FLOPs     | **240** | FLOPs/s doubles, cancels out |
 
 The "sweet spot" is **int8 params + bf16 FLOPs**: half as many chips needed, minimal quality degradation, and B_crit=120 is way more achievable than 240.
 
@@ -70,16 +72,18 @@ The "sweet spot" is **int8 params + bf16 FLOPs**: half as many chips needed, min
 
 ## 📊 Minimum Topology by Precision
 
-| Precision | Param bytes | Min topology |
-|---|---|---|
-| bf16 | 140 GB | **4×4 (16 chips)** |
-| int8 | 70 GB | **4×2 (8 chips)** |
-| int4 | 35 GB | **2×2 (4 chips)** |
+| Precision | Param bytes | Min topology       |
+| --------- | ----------- | ------------------ |
+| bf16      | 140 GB      | **4×4 (16 chips)** |
+| int8      | 70 GB       | **4×2 (8 chips)**  |
+| int4      | 35 GB       | **2×2 (4 chips)**  |
 
 A surprising result: when you fill HBM completely at each topology, **all three give the same max batch (~44 seqs) and same step latency (~20ms)**:
+
 ```
 T = HBM_per_chip / W_hbm = 16 GB / 8.1e11 = 19.8ms
 ```
+
 The topology choice changes cost and chip count, not necessarily latency.
 
 ---
@@ -91,10 +95,10 @@ QPS/chip = batch / (step_time × decode_steps × N_chips)
 ```
 
 | Precision | N chips | Max batch | QPS/chip |
-|---|---|---|---|
-| bf16 | 16 | 44 | **0.27** |
-| int8 | 8 | 44 | **0.54** |
-| int4 | 4 | 44 | **1.07** |
+| --------- | ------- | --------- | -------- |
+| bf16      | 16      | 44        | **0.27** |
+| int8      | 8       | 44        | **0.54** |
+| int4      | 4       | 44        | **1.07** |
 
 **int4 gives 4× better QPS/chip than bf16** — but validate accuracy before deploying!
 
@@ -103,10 +107,12 @@ QPS/chip = batch / (step_time × decode_steps × N_chips)
 ## 🚀 Doubling Topology (bf16: 4×4 → 4×8)
 
 More chips = more HBM for KV = bigger batches:
+
 ```
 Available for KV: 512GB - 140GB = 372GB
 Max batch: 372 / 2.62 GB/seq = 143 sequences (was 44)
 ```
+
 **3.3× more total throughput, 1.6× more per-chip** — super-linear gains from scaling!
 
 But can we actually use a 4×8 with model parallelism?
@@ -176,4 +182,4 @@ Full solutions: [Model_scaling_jax](https://github.com/YashJayswal24/Model_scali
 
 ---
 
-*Math decides your topology. KV cache decides your batch size. Both decide your bill.*
+_Math decides your topology. KV cache decides your batch size. Both decide your bill._

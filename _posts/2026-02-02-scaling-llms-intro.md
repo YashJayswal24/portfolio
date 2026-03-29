@@ -20,6 +20,7 @@ This post covers **Part 0: Introduction**, where I explored the fundamental trad
 **Why doesn't adding more chips always make training faster?**
 
 The answer lies in understanding three bottlenecks:
+
 1. **Compute** (Peak FLOPs)
 2. **Memory** (HBM Bandwidth)
 3. **Communication** (Interconnect Bandwidth)
@@ -31,11 +32,13 @@ The answer lies in understanding three bottlenecks:
 ### Round 1: Understanding the Fundamentals
 
 #### Q1: The "Strong Scaling" Trade-off
+
 **Question**: Why does adding more chips not always result in a linear increase in speed?
 
 **My Answer**: Strong scaling means adding chips to reduce time for a **fixed problem size**. However, as you shard a model further, **communication becomes the bottleneck**.
 
-**Key Insight**: 
+**Key Insight**:
+
 - **Weak Scaling** = More chips → More users/data.
 - **Strong Scaling** = More chips → Less time (for the same workload).
 - As the **Compute-to-Communication ratio** drops, you hit a wall.
@@ -43,9 +46,11 @@ The answer lies in understanding three bottlenecks:
 ---
 
 #### Q2: The Bottleneck Theory
+
 **Question**: What are the three primary factors that form the "roofline"?
 
 **My Answer**: The three pillars are:
+
 1. **Peak FLOPs** (compute capacity)
 2. **HBM Bandwidth** (memory bandwidth)
 3. **Interconnect Bandwidth** (communication between chips)
@@ -55,6 +60,7 @@ The answer lies in understanding three bottlenecks:
 ---
 
 #### Q3: Architecture vs. Hardware
+
 **Question**: Why is understanding interconnects more important today than five years ago?
 
 **My Answer**: Algorithms have consolidated into **Transformers**, which are built entirely on matrix multiplications—exactly what TPUs/GPUs excel at. At high scale, any latency in the interconnect adds up.
@@ -66,9 +72,11 @@ The answer lies in understanding three bottlenecks:
 ### Round 2: Deeper Systems Thinking
 
 #### Q4: The "Alchemy" vs. "Science" Distinction
+
 **Question**: What distinguishes ML "alchemy" from ML "science"?
 
-**My Definition**: 
+**My Definition**:
+
 - **Science** = Predicting performance and resource usage accurately.
 - **Alchemy** = Relying on intuition where things "just work."
 
@@ -77,7 +85,8 @@ The answer lies in understanding three bottlenecks:
 ---
 
 #### Q5: The "Communication-Bound" Nightmare
-**Question**: Why can doubling chips sometimes *slow down* training?
+
+**Question**: Why can doubling chips sometimes _slow down_ training?
 
 **My Answer**: The bottleneck shifts to the **ICI (Inter-Chip Interconnects)**. If communication takes longer than computation, we become **communication-bound**, and strong scaling breaks.
 
@@ -86,6 +95,7 @@ The answer lies in understanding three bottlenecks:
 ---
 
 #### Q6: Hardware-Driven Design
+
 **Question**: Why did Transformers "win" over other architectures?
 
 **My Answer**: Transformers were designed for **parallelism**. Their math (attention as matrix ops) perfectly aligns with TPU/GPU capabilities, allowing them to scale with compute.
@@ -97,6 +107,7 @@ The answer lies in understanding three bottlenecks:
 ## 🧠 Personal Reflection
 
 At Samsung, when we talk about "optimizing models," we're really asking:
+
 1. Are we **compute-bound**? (Waiting for matrix ops)
 2. Are we **memory-bound**? (Waiting for data to load)
 3. Are we **communication-bound**? (Waiting for chips to sync)
@@ -113,4 +124,4 @@ All my notes and future implementations are in the [Model_scaling_jax](https://g
 
 ---
 
-*Turning alchemy into science, one section at a time.*
+_Turning alchemy into science, one section at a time._

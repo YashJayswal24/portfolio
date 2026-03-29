@@ -22,9 +22,9 @@ Both are math-heavy and require a solid understanding of optimization theory.
 
 ## 💡 What I Learned
 
--   **Lagrangian Multipliers:** The dual formulation of SVM relies on Lagrangians for constrained optimization—a concept I mostly saw in physics before!
--   **The Kernel Trick:** Allows us to compute dot products in higher-dimensional spaces without ever going there explicitly.
--   **A Note on the Deep-ML Solution:** The problem description uses `α_i ← α_i + η_t(y_i - λ*α_i)`. I found it clearer to separate the decay term: `α_i ← (1 - 1/t) * α_i + η_t * y_i`, which achieves the same mathematical result.
+- **Lagrangian Multipliers:** The dual formulation of SVM relies on Lagrangians for constrained optimization—a concept I mostly saw in physics before!
+- **The Kernel Trick:** Allows us to compute dot products in higher-dimensional spaces without ever going there explicitly.
+- **A Note on the Deep-ML Solution:** The problem description uses `α_i ← α_i + η_t(y_i - λ*α_i)`. I found it clearer to separate the decay term: `α_i ← (1 - 1/t) * α_i + η_t * y_i`, which achieves the same mathematical result.
 
 ### 📚 Best Resource
 
@@ -46,15 +46,15 @@ def pegasos_kernel_svm(data: np.ndarray, labels: np.ndarray, kernel='linear', la
     n_samples, n_features = data.shape
     alphas = np.zeros(n_samples)
     bias = 0.0
-    
+
     def linear_kernel(x1, x2):
         return np.sum(x1 * x2, axis=1)
-    
+
     def rbf_kernel(x1, x2, sigma):
         return np.exp(-np.linalg.norm(x1 - x2, axis=1) ** 2 / (2 * sigma ** 2)).reshape(-1)
-    
+
     kernel_fun = linear_kernel if kernel == 'linear' else lambda x1, x2: rbf_kernel(x1, x2, sigma)
-    
+
     for t in range(1, iterations + 1):
         lr = 1 / (lambda_val * t)
         for i in range(n_samples):
@@ -62,7 +62,7 @@ def pegasos_kernel_svm(data: np.ndarray, labels: np.ndarray, kernel='linear', la
             if labels[i] * pred < 1:
                 alphas[i] = (1 - 1/t) * alphas[i] + lr * labels[i]
                 bias += lr * labels[i]
-    
+
     return alphas.tolist(), bias
 ```
 
@@ -71,8 +71,8 @@ def pegasos_kernel_svm(data: np.ndarray, labels: np.ndarray, kernel='linear', la
 ```python
 # Linear Kernel
 alphas, b = pegasos_kernel_svm(
-    np.array([[1, 2], [2, 3], [3, 1], [4, 1]]), 
-    np.array([1, 1, -1, -1]), 
+    np.array([[1, 2], [2, 3], [3, 1], [4, 1]]),
+    np.array([1, 1, -1, -1]),
     kernel='linear', lambda_val=0.01, iterations=100
 )
 print(([round(a, 4) for a in alphas], round(b, 4)))
@@ -80,8 +80,8 @@ print(([round(a, 4) for a in alphas], round(b, 4)))
 
 # RBF Kernel
 alphas, b = pegasos_kernel_svm(
-    np.array([[1, 2], [2, 3], [3, 1], [4, 1]]), 
-    np.array([1, 1, -1, -1]), 
+    np.array([[1, 2], [2, 3], [3, 1], [4, 1]]),
+    np.array([1, 1, -1, -1]),
     kernel='rbf', lambda_val=0.01, iterations=100, sigma=0.5
 )
 print(([round(a, 4) for a in alphas], round(b, 4)))
@@ -92,4 +92,4 @@ print(([round(a, 4) for a in alphas], round(b, 4)))
 
 👉 **[Full Code on GitHub](https://github.com/YashJayswal24/deepml-solns/tree/main/pegasos-kernel-svm)**
 
-*On to the next challenge!*
+_On to the next challenge!_
