@@ -305,6 +305,11 @@ ninja.data = [{
           description: "Built cryptocurrency system using SHA256 hashing and implemented mechanism to validate transactions.",
           section: "Projects",handler: () => {
               window.location.href = "/portfolio/projects/dscoin/";
+            },},{id: "projects-large-language-model-scaling",
+          title: 'Large Language Model Scaling',
+          description: "Systems Engineering, Distributed Computation, and Mixture of Experts on TPUs",
+          section: "Projects",handler: () => {
+              window.location.href = "/portfolio/projects/model_scaling/";
             },},{id: "teachings-data-science-fundamentals",
           title: 'Data Science Fundamentals',
           description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
