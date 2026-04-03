@@ -131,11 +131,11 @@ npx prettier . --write
 
 ### 4. CV/Resume
 
-**Files:** `assets/json/resume.json` OR `_data/cv.yml`
+**Files:** `assets/json/resume.json`
 
-- Use JSON format (jsonresume.org standard) in `assets/json/resume.json`
-- Or use YAML format in `_data/cv.yml` (delete resume.json to use this)
-- Add education, work experience, skills, awards, publications
+- **IMPORTANT:** The user uses JSON format (jsonresume.org standard) in `assets/json/resume.json` as the active source of truth.
+- Do NOT edit `_data/cv.yml`. Editing `cv.yml` will not work because the JSON file takes precedence.
+- Add education, work experience, skills, awards, publications, and projects directly to the JSON arrays in `resume.json`.
 
 ### 5. Publications
 

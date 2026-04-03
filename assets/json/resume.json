@@ -148,6 +148,15 @@
   ],
   "projects": [
     {
+      "name": "LLM Scaling & Systems Optimization (JAX/TPU)",
+      "url": "https://github.com/YashJayswal24/Model_scaling_jax",
+      "summary": "Engineered distributed Transformer components in JAX with TP, PP, and FSDP to overcome auto-compiler scaling bottlenecks.",
+      "highlights": [
+        "Hand-coded a Mixture of Experts (MoE) layer via jax.shard_map with explicit All-to-All token routing, completely eliminating native AllGather memory explosions.",
+        "Leveraged XLA trace profiling to hide interconnect latency behind compute, achieving a 43x MoE speedup (73ms to 1.7ms) on Kaggle TPU v5e-8."
+      ]
+    },
+    {
       "name": "Semantic Communication",
       "url": "https://drive.google.com/file/d/15frSPyPzs91r3MZHEGQrwWydvcyGISyc/view",
       "summary": "Developed a generative AI-based semantic communication pipeline targeting 6G communication.",
