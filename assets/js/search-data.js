@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/portfolio/cv/";
           },
-        },{id: "post-scaling-llms-moe-routing-amp-jax-parallelism-on-tpu",
+        },{id: "post-imc-prosperity-4-top-1-2-out-of-22-000-teams",
+        
+          title: "IMC Prosperity 4: Top 1.2% Out of 22,000+ Teams",
+        
+        description: "How our team Gradient Exploders placed",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/portfolio/blog/2026/imc-prosperity-4/";
+          
+        },
+      },{id: "post-scaling-llms-moe-routing-amp-jax-parallelism-on-tpu",
         
           title: "Scaling LLMs: MoE Routing &amp; JAX Parallelism on TPU",
         
