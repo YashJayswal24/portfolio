@@ -1,9 +1,3 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
-
-"PhysRev":
-  url: https://journals.aps.org/
-
-"Vision":
-  color: "#009f36"
+"JHBSE":
+  url: https://doi.org/10.1080/10911359.2026.2698876
+  color: "#6f42c1"

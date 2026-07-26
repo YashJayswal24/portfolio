@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Software Engineer @ Samsung HQ | IIT Delhi '24
+subtitle: ML/AI Speech Engineer @ Samsung HQ | IIT Delhi '24
 
 profile:
   align: right
@@ -11,7 +11,7 @@ profile:
   more_info: >
     Suwon, South Korea
 
-selected_papers: false # Set to false if you don't have papers.bib papers yet
+selected_papers: true # Set to false if you don't have papers.bib papers yet
 social: true
 
 announcements:
@@ -25,8 +25,8 @@ latest_posts:
   limit: 3
 ---
 
-I am a Software Engineer at **Samsung HQ** in Suwon, South Korea, where I work on developing and optimizing Automatic Speech Recognition (ASR) models on cloud for Bixby. I graduated from the **Indian Institute of Technology Delhi** with a B.Tech. in Electrical Engineering.
+I am an ML/AI Speech Engineer at **Samsung HQ** in Suwon, South Korea, where I fine-tune and optimize multilingual Automatic Speech Recognition (ASR) models on cloud for Bixby. I graduated from the **Indian Institute of Technology Delhi** with a B.Tech. in Electrical Engineering.
 
-My professional interests lie at the intersection of Machine Learning, Signal Processing, and Software Engineering with a concetration on resource efficient AI. I have experience in building scalable C++ modules for cloud environments, designing data pipelines, and researching generative AI for semantic communication.
+My professional interests lie at the intersection of Machine Learning Systems, Speech, and low-latency inference. I have experience fine-tuning streaming ASR models with LoRA adapters, building scalable C++ cloud modules, and optimizing LLM/MoE training and inference on distributed accelerators (JAX/TPU).
 
 When I'm not coding for work, I enjoy participating in competitive programming (Expert on Codeforces) and exploring new technologies in the AI optimization space.
