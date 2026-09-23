@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: ML/AI Speech Engineer @ Samsung HQ | IIT Delhi '24
+subtitle: ML/AI Speech Engineer @ Samsung HQ | ASR · LLM Serving · Distributed Training
 
 profile:
   align: right
@@ -27,6 +27,6 @@ latest_posts:
 
 I am an ML/AI Speech Engineer at **Samsung HQ** in Suwon, South Korea, where I fine-tune and optimize multilingual Automatic Speech Recognition (ASR) models on cloud for Bixby. I graduated from the **Indian Institute of Technology Delhi** with a B.Tech. in Electrical Engineering.
 
-My professional interests lie at the intersection of Machine Learning Systems, Speech, and low-latency inference. I have experience fine-tuning streaming ASR models with LoRA adapters, building scalable C++ cloud modules, and optimizing LLM/MoE training and inference on distributed accelerators (JAX/TPU).
+My professional interests lie at the intersection of Machine Learning Systems, Speech, and low-latency inference. I have experience fine-tuning streaming ASR models with LoRA adapters, building scalable C++/TensorRT cloud inference modules, and optimizing LLM/MoE training and inference on distributed accelerators (JAX/TPU). In summer 2026, I was a Research Assistant with the MLSys Group at UC San Diego, working on CodeNib, a multi-view repository context system for AI coding agents.
 
 When I'm not coding for work, I enjoy participating in competitive programming (Expert on Codeforces) and exploring new technologies in the AI optimization space.

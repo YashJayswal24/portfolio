@@ -1,11 +1,11 @@
 {
   "basics": {
     "name": "Yash Jayswal",
-    "label": "ML/AI Speech Engineer",
+    "label": "ML Systems & Inference Optimization | ASR · LLM Serving · Distributed Training",
     "image": "",
     "email": "yashmjayswal@gmail.com",
     "url": "https://YashJayswal24.github.io/portfolio/",
-    "summary": "ML/AI Speech Engineer at Samsung HQ, Suwon, South Korea. IIT Delhi graduate (B.Tech Electrical Engineering). Experienced in ASR/LLM inference optimization, C++ cloud infrastructure, and ML systems research.",
+    "summary": "ML/AI Speech Engineer at Samsung HQ, Suwon, South Korea; previously a Research Assistant with the MLSys Group at UC San Diego (Summer 2026). IIT Delhi graduate (B.Tech Electrical Engineering). Experienced in ASR/LLM inference optimization, C++ cloud infrastructure, and ML systems research.",
     "location": {
       "city": "Suwon",
       "countryCode": "KR",
@@ -51,20 +51,22 @@
   ],
   "work": [
     {
-      "name": "CodeMiner (Open Source)",
+      "name": "MLSys Group, UC San Diego",
       "position": "Research Assistant",
+      "location": "Remote",
       "url": "",
       "startDate": "2026-06-01",
-      "endDate": "",
-      "summary": "Contributing to an open-source code retrieval system for AI coding agents, targeting VLDB.",
+      "endDate": "2026-09-01",
+      "summary": "Contributed to CodeNib, an open-source multi-view repository context system for AI coding agents (see Publications).",
       "highlights": [
-        "Built C++ indexing backend and inference optimizations for embedding and reranker serving.",
-        "Improved token efficiency and reduced end-to-end retrieval latency for AI coding agents."
+        "Built C++ indexing and inference optimization for embedding and reranker serving in CodeNib.",
+        "Improved token efficiency and reduced retrieval latency for LLM-based AI agents via low-latency data systems."
       ]
     },
     {
       "name": "Samsung HQ",
       "position": "ML/AI Speech Engineer",
+      "location": "Suwon, South Korea",
       "url": "https://www.samsung.com",
       "startDate": "2024-08-01",
       "endDate": "",
@@ -72,7 +74,7 @@
       "highlights": [
         "Fine-tuned a Qwen MoE streaming ASR model using LoRA adapters, investigating WER-latency tradeoffs under streaming constraints, achieving 8% WER on multilingual transcription.",
         "Developed a multilingual ASR model (31 languages) optimized for real-time streaming using quantization, chunking, K-V caching, VAD, and align-attention, achieving ≈ 45% latency reduction from baseline.",
-        "Optimized ASR reliability under high-load conditions via advanced GPU synchronization techniques, achieving high hardware utilization and a 2% improvement in recognition accuracy during peak traffic.",
+        "Built C++ TensorRT inference pipelines and Python ONNX Runtime ASR inference code, including ONNX-to-TensorRT conversion workflows for low-latency deployment.",
         "Implemented scalable C++ model handling modules within a multi-user Bixby Cloud environment for inference-optimized Fast Conformer-based ASR models (encoder-decoder and LSTM architectures).",
         "Designed an end-to-end robust data collection pipeline for low-latency ASR model training."
       ]
@@ -80,6 +82,7 @@
     {
       "name": "Samsung HQ",
       "position": "NLP Intern",
+      "location": "Suwon, South Korea",
       "url": "https://www.samsung.com",
       "startDate": "2023-05-01",
       "endDate": "2023-07-31",
@@ -98,6 +101,13 @@
       "releaseDate": "2026-07",
       "url": "https://doi.org/10.1080/10911359.2026.2698876",
       "summary": "Simulated crowd dynamics via numerical mollification and RK4; optimized obstacle configurations reducing fatalities by 70%."
+    },
+    {
+      "name": "CodeNib: A Multi-View Data System for Serving Repository Context to Coding Agents",
+      "publisher": "arXiv",
+      "releaseDate": "2026-07",
+      "url": "https://arxiv.org/abs/2607.25431",
+      "summary": "Built an incremental multi-view repository-context system for coding agents; 8.7x/25.4x faster graph/vector updates and 50-87% fewer agent trajectory tokens than paired grep/read."
     }
   ],
   "projects": [
@@ -122,8 +132,8 @@
     },
     {
       "name": "Panic-Driven Crowd Dynamics",
-      "url": "https://drive.google.com/file/d/1AKV16C9QtdNNqSU6K-GetxuzQnaQ_GYw/view?usp=sharing",
-      "summary": "Developed strategies to reduce death count in dense crowd panic situations through simulation.",
+      "url": "https://github.com/YashJayswal24/crowd_evacuation",
+      "summary": "Developed strategies to reduce death count in dense crowd panic situations through simulation; published in JHBSE 2026 (see Publications).",
       "highlights": ["Reduced death rate by 70%", "Applied numerical mollification and optimized obstacle shapes"]
     },
     {
@@ -131,6 +141,24 @@
       "url": "https://github.com/YashJayswal24/Crypto_Chain",
       "summary": "Built cryptocurrency system using SHA256 hashing and implemented mechanism to validate transactions.",
       "highlights": ["Proof-of-work Blockchain in Java", "Tree-structured Blockchain & broadcasting"]
+    },
+    {
+      "name": "Speculative Decoding from Scratch",
+      "url": "https://github.com/YashJayswal24/speculative-decoding",
+      "summary": "PyTorch implementation and benchmarking of speculative decoding (Leviathan/Chen et al.) with a distribution-preserving rejection-sampling verifier.",
+      "highlights": [
+        "Implemented the draft-then-verify algorithm with modified rejection sampling, verified via KL-divergence testing that output distribution exactly matches standard autoregressive decoding.",
+        "Benchmarked OPT-125M/OPT-6.7B on an A30 GPU: 1.3x speedup in a from-scratch PyTorch implementation vs. 2.8x with vLLM, attributing the gap to CUDA graph kernel-launch overhead."
+      ]
+    },
+    {
+      "name": "dAIry — On-Device RAG Diary (Android)",
+      "url": "https://github.com/YashJayswal24/dAIry",
+      "summary": "Privacy-first Android journaling app with a fully on-device RAG pipeline that lets users chat with their own past entries using a local Gemma model.",
+      "highlights": [
+        "Built an on-device RAG pipeline (MediaPipe Text Embedder + brute-force cosine retrieval + MediaPipe/AICore Gemma inference) so entries, embeddings, and questions never leave the phone.",
+        "Shipped a working app with CI-built debug/release APKs on every push, verified via a 15-prompt judged chat-eval suite run on-device."
+      ]
     }
   ],
   "awards": [
@@ -151,6 +179,13 @@
       "date": "2020-06",
       "awarder": "National Testing Agency",
       "summary": "Secured All India Rank 1383 among 1 Million+ students."
+    },
+    {
+      "title": "IMC Prosperity 4 — #266 Overall (Top 1.2% of 22,000+ Teams)",
+      "date": "2026-05",
+      "awarder": "IMC Trading",
+      "url": "https://YashJayswal24.github.io/portfolio/blog/2026/imc-prosperity-4/",
+      "summary": "Placed #266 overall and #61 in manual trading globally with team Gradient Exploders in the IMC Prosperity 4 algorithmic trading challenge."
     }
   ],
   "skills": [
@@ -195,6 +230,13 @@
       "issuer": "Deep-ML",
       "url": "https://www.deep-ml.com/credentials/DMLBADGE-RESNET-mkvzwgo0",
       "summary": "Successfully completed all problems in the ResNet collection."
+    },
+    {
+      "name": "ML Summer School 2026 — Certificate of Participation",
+      "date": "2026-08-06",
+      "issuer": "Cohere Labs",
+      "url": "https://credsverse.com/credentials/b8e9bcea-2b22-4a5c-bd32-b8e06cb55a0c",
+      "summary": "Certificate of participation for meaningful engagement in Cohere Labs' ML Summer School 2026 community program."
     }
   ],
   "languages": [
