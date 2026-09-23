@@ -311,6 +311,11 @@ ninja.data = [{
           description: "Developed strategies to reduce death count in dense crowd panic situations through simulation.",
           section: "Projects",handler: () => {
               window.location.href = "/portfolio/projects/crowd_evacuation/";
+            },},{id: "projects-dairy-on-device-rag-diary",
+          title: 'dAIry — On-Device RAG Diary',
+          description: "A private, offline-first Android diary that lets you chat with your own past entries using a local Gemma model. Nothing leaves the phone.",
+          section: "Projects",handler: () => {
+              window.location.href = "/portfolio/projects/dairy/";
             },},{id: "projects-dscoin-cryptocurrency",
           title: 'DSCoin - Cryptocurrency',
           description: "Built cryptocurrency system using SHA256 hashing and implemented mechanism to validate transactions.",
@@ -321,6 +326,11 @@ ninja.data = [{
           description: "Systems Engineering, Distributed Computation, and Mixture of Experts on TPUs",
           section: "Projects",handler: () => {
               window.location.href = "/portfolio/projects/model_scaling/";
+            },},{id: "projects-speculative-decoding-from-scratch",
+          title: 'Speculative Decoding from Scratch',
+          description: "PyTorch implementation and benchmarking of speculative decoding (Leviathan/Chen et al.) with a distribution-preserving rejection-sampling verifier.",
+          section: "Projects",handler: () => {
+              window.location.href = "/portfolio/projects/speculative_decoding/";
             },},{id: "teachings-data-science-fundamentals",
           title: 'Data Science Fundamentals',
           description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
@@ -332,11 +342,11 @@ ninja.data = [{
           section: "Teachings",handler: () => {
               window.location.href = "/portfolio/teachings/introduction-to-machine-learning/";
             },},{
-        id: 'social-cv',
-        title: 'CV',
+        id: 'social-scholar',
+        title: 'Google Scholar',
         section: 'Socials',
         handler: () => {
-          window.open("/portfolio/assets/pdf/Yash_CV.pdf", "_blank");
+          window.open("https://scholar.google.com/citations?user=G66MQVy_aM8C", "_blank");
         },
       },{
         id: 'social-email',
